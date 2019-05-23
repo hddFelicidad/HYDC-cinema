@@ -8,7 +8,11 @@
 }
 
 .cinema-hall {
-
+    width: fit-content;
+    margin: 0 auto 10px;
+    border: 3px solid #accac3;
+    padding: 13px 30px;
+    border-radius: 50px;
 }
 
 .cinema-hall-name {
@@ -26,8 +30,7 @@
     display: inline-block;
     width: 32px;
     height: 32px;
-    margin: 3px;
-
+    margin: 6px;
     border: none;
     outline: none;
 }
@@ -52,4 +55,12 @@
 
     border: none;
     outline: none;
+}
+.cinema-hall-btn{
+    margin: 0 20px;
+}
+.cinema-hall-header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }

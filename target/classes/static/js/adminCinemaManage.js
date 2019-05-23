@@ -32,26 +32,30 @@ $(document).ready(function() {
             }
             var hallDom =
                 "<div class='cinema-hall'>" +
-                "<div>" +
+                "<div class='cinema-hall-header'>" +
                 "<span class='cinema-hall-name'>"+ hall.name +"</span>" +
                 "<span class='cinema-hall-size'>"+ hall.column +'*'+ hall.row +"</span>" +
                 "</div>" +
                 "<div class='cinema-seat'>" + seat +
                 "</div>" +
+                "</div>"+
+                "<div style='display:flex;justify-content:center;margin-bottom:35px;' id='cinema-hall-btn-"+hall.id+"'>" +
                 "</div>"
             ;
             $('#hall-card').append(hallDom);
-            var bt0=document.createElement("button");
-            bt0.innerHTML= "<button type='button'class='btn btn-primary' data-backdrop='static' data-toggle='modal' data-target='#hallEditModal'>修改影厅信息</button>";
+            var bt0=document.createElement("div");
+            bt0.className='cinema-hall-btn';
+            bt0.innerHTML= "<a type='button' class='btn btn-primary' data-backdrop='static' data-toggle='modal' data-target='#hallEditModal'>修改影厅信息</a>";
             bt0.onclick=function() {
                 nowHallId=hall.id;
                 $("#edit-hall-name-input" ).val(hall.name);
                 $("#edit-hall-row-input" ).val(hall.row);
                 $("#edit-hall-column-input" ).val(hall.column);
             };
-            $('#hall-card').append(bt0);
-            var bt1=document.createElement("button");
-            bt1.innerHTML= "<button  type='button' class='btn btn-danger' id='delete-btn-"+ hall.id +" '><span>删除影厅信息</span></button>";
+            $('#cinema-hall-btn-'+hall.id).append(bt0);
+            var bt1=document.createElement("div");
+            bt1.className='cinema-hall-btn';
+            bt1.innerHTML= "<a type='button' class='btn btn-danger' id='delete-btn-"+ hall.id +" '><span>删除影厅信息</span></a>";
             bt1.onclick=function() {
                 getRequest(
                     '/hall/get?id='+hall.id,
@@ -87,7 +91,7 @@ $(document).ready(function() {
                     }
                 );
             };
-            $('#hall-card').append(bt1);
+            $('#cinema-hall-btn-'+hall.id).append(bt1);
         });
 
     }
