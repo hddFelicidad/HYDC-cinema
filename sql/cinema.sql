@@ -331,7 +331,7 @@ CREATE TABLE `vip_card` (
   `gift_money` DOUBLE NOT NULL,
   `price` DOUBLE NOT NULL,
   `total_amount`DOUBLE DEFAULT NULL,
-  `last_order_date`timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_order_date`timestamp DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `vip_card_user_id_uindex` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
@@ -343,7 +343,7 @@ CREATE TABLE `vip_card` (
 
 LOCK TABLES `vip_card` WRITE;
 /*!40000 ALTER TABLE `vip_card` DISABLE KEYS */;
-/*INSERT INTO `vip_card` VALUES (1,15,375,'2019-04-21 13:54:38',200,30,25),(2,12,660,'2019-04-17 18:47:42',200,30,25);
+INSERT INTO `vip_card` VALUES (1,15,375,'2019-04-21 13:54:38',200,30,25),(2,12,660,'2019-04-17 18:47:42',200,30,25);
 /*!40000 ALTER TABLE `vip_card` ENABLE KEYS */;
 UNLOCK TABLES;
 
