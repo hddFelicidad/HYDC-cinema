@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    var user_type="客户";
 
     $("#signUp-btn").click(function () {
         var formData = getSignUpForm();
@@ -27,8 +26,7 @@ $(document).ready(function () {
         return {
             username: $('#signUp-name').val(),
             password: $('#signUp-password').val(),
-            secondPassword: $('#signUp-second-password').val(),
-            type:user_type
+            secondPassword: $('#signUp-second-password').val()
         };
     }
 
