@@ -6,6 +6,10 @@ import com.example.cinema.vo.VIPStrategyForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**会员卡策略管理
+ * @author poh
+ * @date 2019/6/9 8：30 PM
+ */
 @RestController
 @RequestMapping("/vipStrategy")
 public class VIPStrategyController {

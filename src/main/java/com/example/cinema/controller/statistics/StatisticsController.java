@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-/**
- * @author fjj
- * @date 2019/4/16 1:34 PM
+/**图表管理
+ * @author poh
+ * @date 2019/5/23 10:53 AM
  */
 @RestController
 public class StatisticsController {

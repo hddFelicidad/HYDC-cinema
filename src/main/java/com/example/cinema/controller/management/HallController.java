@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 /**影厅管理
- * @author fjj
- * @date 2019/4/12 1:59 PM
+ * @author poh
+ * @date 2019/6/12 5:50 PM
  */
 @RestController
 public class HallController {

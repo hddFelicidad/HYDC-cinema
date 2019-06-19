@@ -7,8 +7,9 @@ import com.example.cinema.vo.VIPInfoForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created by liying on 2019/4/14.
+/**用户会员卡管理
+ * @author bjh
+ * @date 2019/6/5 4:45 PM
  */
 @RestController()
 @RequestMapping("/vip")

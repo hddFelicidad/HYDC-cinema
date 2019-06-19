@@ -1,6 +1,5 @@
 package com.example.cinema.blImpl.promotion;
 
-import com.example.cinema.po.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class CouponServiceImplTest {
     @Autowired
-    CouponServiceImpl couponService;
+    CouponServiceImplTest couponService;
 
     @Test
     public void getCouponsByUser() {
@@ -17,7 +16,6 @@ public class CouponServiceImplTest {
 
     @Test
     public void addCoupon() {
-
     }
 
     @Test

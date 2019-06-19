@@ -115,9 +115,7 @@ $(document).ready(function() {
                         type: 'category',
                         data: nameList
                     },
-                    yAxis: {
-                        type: 'value'
-                    },
+                    yAxis: {},
                     series: [{
                         data: tableData,
                         type: 'bar'

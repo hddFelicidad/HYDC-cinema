@@ -1,0 +1,43 @@
+.refund-container {
+    display: flex;
+    width: 100%;
+    min-height: 200px;
+    margin: 20px 0;
+}
+.refund-card {
+    padding: 20px;
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+    background: linear-gradient(to left, #defbd2 , #c8e3f1);
+    border-radius: 20px;
+}
+.content-refundStrategy{
+    width: 87%;
+    margin: 0 auto;
+}
+.refund-card-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.refund-card-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 14%;
+}
+.refund-right-btn{
+    margin: 10px auto;
+}
+.refund-line {
+    display: flex;
+    align-items: baseline;
+}
+
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+}

@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
- * @author fjj
- * @date 2019/3/12 6:26 PM
+ * @author poh
+ * @date 2019/6/2 8:30 PM
  */
 @Mapper
 public interface MovieMapper {

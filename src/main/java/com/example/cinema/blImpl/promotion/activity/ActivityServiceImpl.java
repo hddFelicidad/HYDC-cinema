@@ -22,6 +22,9 @@ import java.util.ArrayList;
  */
 @Service
 public class ActivityServiceImpl implements ActivityService, ActivityServiceForBl {
+    private static final String DATE_LESS_THAN_LENGTH_ERROR_MESSAGE = "结束时间不能早于开始时间";
+    private static final String TARGET_ERROR_MESSAGE="需满金额应大于0";
+    private static final String DISCOUNT_ERROR_MESSAGE="优惠金额应大于0";
 
     @Autowired
     ActivityMapper activityMapper;
@@ -42,6 +45,15 @@ public class ActivityServiceImpl implements ActivityService, ActivityServiceForB
             activity.setStartTime(activityForm.getStartTime());
             activity.setEndTime(activityForm.getEndTime());
             activity.setCoupon(coupon);
+            if (activity.getStartTime().after(activity.getEndTime())){
+                return ResponseVO.buildFailure(DATE_LESS_THAN_LENGTH_ERROR_MESSAGE);
+            }
+            else if (coupon.getTargetAmount()<0){
+                return ResponseVO.buildFailure(TARGET_ERROR_MESSAGE);
+            }
+            else if (coupon.getDiscountAmount()<0){
+                return ResponseVO.buildFailure(DISCOUNT_ERROR_MESSAGE);
+            }
             activityMapper.insertActivity(activity);
             if(activityForm.getMovieList()!=null&&activityForm.getMovieList().size()!=0){
                 activityMapper.insertActivityAndMovie(activity.getId(), activityForm.getMovieList());

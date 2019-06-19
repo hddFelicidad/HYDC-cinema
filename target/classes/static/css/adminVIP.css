@@ -20,7 +20,7 @@
     flex-basis: 60%;
     justify-content: space-around;
     border-radius: 10px 0px 0px 10px;
-    background-image: url("../images/vipback.jpg");
+    background: linear-gradient(to left, #defbd2 , #c8e3f1);
 
 }
 .strategy-line {
@@ -36,7 +36,7 @@
     justify-content: space-around;
     color: #ffffff;
     border-radius: 0 10px 10px 0;
-    background: #3e8fa7;
+    background: #60bfab;
 }
 
 .price-show{

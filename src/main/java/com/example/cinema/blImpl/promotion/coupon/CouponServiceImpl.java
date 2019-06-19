@@ -2,12 +2,15 @@ package com.example.cinema.blImpl.promotion.coupon;
 
 import com.example.cinema.bl.promotion.CouponService;
 import com.example.cinema.data.promotion.CouponMapper;
+import com.example.cinema.data.sales.TicketMapper;
 import com.example.cinema.po.Coupon;
 import com.example.cinema.vo.CouponForm;
+import com.example.cinema.vo.CouponVO;
 import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +22,22 @@ public class CouponServiceImpl implements CouponService, CouponServiceForBl {
     @Autowired
     CouponMapper couponMapper;
 
+    @Autowired
+    TicketMapper ticketMapper;
+
+
+
+
     @Override
     public ResponseVO getCouponsByUser(int userId) {
         try {
-            return ResponseVO.buildSuccess(couponMapper.selectCouponByUser(userId));
+            List<Coupon> coupons=couponMapper.selectCouponByUser(userId);
+            List<CouponVO> couponVOList=new ArrayList<>();
+            for (Coupon coupon:coupons){
+                CouponVO couponVO=coupon.toVO();
+                couponVOList.add(couponVO);
+            }
+            return ResponseVO.buildSuccess(couponVOList);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");

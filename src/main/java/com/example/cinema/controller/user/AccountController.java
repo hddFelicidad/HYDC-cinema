@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * @author huwen
- * @date 2019/3/23
+/**用户登录注册管理
+ * @author bjh
+ * @date 2019/6/7 7:20 PM
  */
 @RestController()
 public class AccountController {

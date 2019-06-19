@@ -2,9 +2,14 @@
     display: flex;
     justify-content: space-between;
 }
+.content-vipStrategy{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 .strategy-container{
     display: flex;
-    width: 100%;
+    width: 49%;
     min-height: 200px;
     margin: 20px 0;
 }
@@ -12,8 +17,10 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-basis: 70%;
+    flex-basis: 60%;
     justify-content: space-around;
+    border-radius: 10px 0px 0px 10px;
+    background: linear-gradient(to left, #defbd2 , #c8e3f1);
 
 }
 .strategy-line {
@@ -22,12 +29,14 @@
 }
 
 .strategy-price{
-    flex-basis: 30%;
+    flex-basis: 40%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    background: #60bfab;
 }
 
 .price-show{
@@ -51,4 +60,7 @@
 }
 #mytab{
     margin: 20px auto;
+}
+.vip-card-btn{
+    border-radius: 5px;
 }

@@ -6,6 +6,10 @@ import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**退票策略管理
+ * @author poh
+ * @date 2019/6/14 6:45 PM
+ */
 @RestController
 @RequestMapping("/strategy")
 public class RefundStrategyController {

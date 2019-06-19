@@ -33,7 +33,9 @@ $(document).ready(function() {
 
             refundsDomStr+=
                 "<div class='refund-container'>" +
-                "    <div class='refund-card card'>" +
+                "    <div class='refund-card'>" +
+                "       <i class='icon-tags' style='font-size: 50px; margin-right: 7%'></i>"+
+                "       <div class='refund-card-left'>" +
                 "       <div class='refund-line'>" +
                 "           <span class='title'>"+fund.name+"</span>" +
                 "           <span class='gray-text'>"+fund.description+"</span>" +
@@ -48,12 +50,16 @@ $(document).ready(function() {
                 "           <span>参与电影：</span>" +
                 "               <ul>"+movieDomStr+"</ul>" +
                 "       </div>" +
+                "       </div>"+
+                "       <div class='refund-card-right refund-card-right-"+fund.id+"'>" +
+                "       </div>"+
                 "    </div>" +
-                "</div>"
-            ;
+                "</div>";
+
             $(".content-refundStrategy").append(refundsDomStr);
-            var btn0 = document.createElement("button");
-            btn0.innerHTML = "<button type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#refundEditModal'><span>修改</span></button>";
+            var btn0 = document.createElement("div");
+            btn0.className='refund-right-btn';
+            btn0.innerHTML = "<a type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#refundEditModal'><span>修改</span></a>";
             btn0.onclick = function () {
                 nowRefundId=fund.id;
                 $("#refund-edit-name-input").val(fund.name);
@@ -62,9 +68,10 @@ $(document).ready(function() {
                 $("#refund-edit-charge-input").val(fund.bookingCharge);
 
             };
-            $(".content-refundStrategy").append(btn0);
-            var btn1 = document.createElement("button");
-            btn1.innerHTML = "<button type='button' class='strategy-delete btn btn-default' ><span>删除</span></button>";
+            $(".refund-card-right-"+fund.id).append(btn0);
+            var btn1 = document.createElement("div");
+            btn1.className='refund-right-btn';
+            btn1.innerHTML = "<a type='button' class='strategy-delete btn btn-default' ><span>删除</span></a>";
             btn1.onclick = function () {
                 var r = confirm("确认要删除该退票策略吗");
                 if (r) {
@@ -84,7 +91,7 @@ $(document).ready(function() {
                     );
                 }
             };
-            $(".content-refundStrategy").append(btn1);
+            $(".refund-card-right-"+fund.id).append(btn1);
         });
 
     }
