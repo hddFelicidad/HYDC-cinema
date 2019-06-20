@@ -1,0 +1,40 @@
+.content-staff{
+    margin-top: 20px;
+}
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.detail-content-header {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-left: 10%;
+}
+.staff-detail-info{
+    width: 70%;
+    border: 1px solid #8f939e;
+    margin: 0 auto;
+}
+.staff-detail-info .staff-detail-info-item{
+    height: 50px;
+    line-height: 46px;
+    padding: 0 70px;
+    font-size: 14px;
+}
+.staff-detail-info .odd{
+    background-color: #fafafa;
+}
+.staff-detail-info .even{
+    background-color: #ffffff;
+}
+.staff-detail-info-item .item-title{
+    display: inline-block;
+    width: 350px;
+    color: #333333;
+}
+.staff-detail-info-item .item-info{
+    color: #333333;
+}
