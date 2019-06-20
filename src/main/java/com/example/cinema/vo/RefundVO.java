@@ -1,6 +1,7 @@
 package com.example.cinema.vo;
 
-public class RefundForm {
+public class RefundVO {
+
     /**
      * 原价
      */
@@ -16,7 +17,7 @@ public class RefundForm {
      */
     private double refundPrice;
 
-    public RefundForm(){
+    public RefundVO(){
     }
 
     public double getOriginalPrice(){return originalPrice;}

@@ -1,6 +1,15 @@
 package com.example.cinema.vo;
 
-public class VIPInfoForm {
+
+public class VIPStrategyForm {
+    /**
+     * id
+     */
+    private int id;
+    /**
+     * 名字
+     */
+    private String name;
     /**
      * 目标金额
      */
@@ -13,6 +22,22 @@ public class VIPInfoForm {
      * 购买该vip卡所需金额
      */
     private double price;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public double getTargetMoney() {
         return targetMoney;
