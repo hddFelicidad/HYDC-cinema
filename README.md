@@ -5,8 +5,6 @@ springboot+hibernate项目
 项目的网页在`src\main\resources\static\admin\`下。对应的路由为/admin/seat.html和/admin/position.html。
 
 
-项目有对Seat的增删查，和对Position的增删查功能。
-
 
 ## 操作手册
 
@@ -20,4 +18,3 @@ springboot+hibernate项目
 8. 测试结果显示测试用例通过个数，发现测试结果为 “座位添加失败”。
 9. 我们回到项目代码中，将注释去掉，进行第二次提交。回到系统中作业页面，重新进入项目，查看到有新的构建记录。
 10. 进入部署标签页，选择本次成功构建的镜像，依次点击“部署”，部署成功后在测试标签页内点击“测试”按钮，最终查看测试结果为全部通过。
-
