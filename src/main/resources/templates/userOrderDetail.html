@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的订单</title>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/userOrderDetail.css"/>
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/userOrderDetail.js"></script>
+
+</head>
+<body>
+<div class="nav-top-container">
+    <div class="nav-logo title">NJU-Se电影购票系统</div>
+    <ul class="nav nav-pills">
+        <li role="presentation" class="active"><a href="/user/home">首页</a></li>
+        <li role="presentation"><a href="/user/movie">电影</a></li>
+    </ul>
+    <div class="btn-group">
+        <button class="nav-user-container btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="avatar-sm" src="/images/defaultAvatar.jpg" />
+            <span class="gray-text" style="vertical-align: middle">用户A&nbsp;<span class="caret"></span></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="/user/buy">电影票</a></li>
+            <li><a href="/user/member">卡包</a></li>
+            <li><a href="/user/order">我的订单</a></li>
+            <li id="logout"><a href="#">登出</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="container">
+        <div class="order-container">
+            <!-- 已完成title -->
+            <div class="state-box finished" style="display: none">
+                <p class="title icon-ok-circle">已完成</p>
+            </div>
+            <!-- 退款成功title -->
+            <div class="state-box refund-succeed" style="display: none" >
+                <p class="title icon-edit">退款成功</p>
+                <p class="desc">
+                    退款到账时间按银行处理速度而定，一般
+                    <span>1~3</span>
+                    个工作日可到账
+                </p>
+            </div>
+            <!-- 待支付title -->
+            <div class="state-box unpaid" style="display: none">
+                <p class="title icon-edit">待支付</p>
+                <p class="desc">
+                    请在确认订单后
+                    <span>15</span>
+                    分钟内完成支付
+                </p>
+            </div>
+
+            <div class="order-note">
+                <span class="order-id">订单号：</span>
+                <span class="contact">
+                    （有订单问题可拨打客服电话
+                    <i>188-5208-3631</i>
+                    ，工作时间：9:00-24:00）
+                </span>
+            </div>
+            <table class="order-table">
+                <thead>
+                <tr>
+                    <th>影片</th>
+                    <th>时间</th>
+                    <th>影厅</th>
+                    <th>座位</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="movie-name">《夏目友人帐》</td>
+                    <td class="showtime">周六 5月23日 16:20</td>
+                    <td class="hall-name"></td>
+                    <td>
+                        <span class="seats">
+                            <span>
+                                <i id="column-num">8</i>
+                                排
+                                <i id="row-num">9</i>
+                                座
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="order-bottom">
+                <div class="clearfix">
+                    <div class="cinema-info">
+                        <p class="name">HYDC影城(南京店)</p>
+                        <p class="address">地址：仙林大道163号杜厦商场3楼</p>
+                        <p class="phone">电话：025-88886666</p>
+                    </div>
+                    <div class="price-box">
+                        <span>总价</span>
+                        <span class="price">23.33</span>
+                    </div>
+                </div>
+                <!-- 退款按钮 -->
+                <div id="btn-refund" class="btn-wrapper" style="display: none">
+                    <div class="pay-btn" onclick="refund()" data-toggle="modal" data-target="#refundModal">申请退票</div>
+                </div>
+                <!-- 带支付按钮 -->
+                <div id="btn-repay" class="btn-wrapper" style="display: none">
+                    <div class="pay-btn" onclick="repay()" data-toggle="modal" data-target="#repayModal">立即支付</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="repayModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">付款</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" style="margin-bottom: 20px;">
+                    <li role="presentation" class="active" id="member-repay" onclick="switchRepay(0)"><a href="#">会员卡支付</a></li>
+                    <li role="presentation" id="nonmember-repay" onclick="switchRepay(1)"><a href="#">银行卡支付</a></li>
+                </ul>
+
+                <div id="modal-body-member-repay" style="margin-bottom: 20px;">
+                    <div id="member-balance-repay"><b>会员卡余额：</b>&nbsp;&nbsp;90元</div>
+                </div>
+
+                <div id="modal-body-nonmember-repay" style="display: none;">
+                    <div class="form-group">
+                        <label for="user-repay-cardNum">银行卡号</label>
+                        <input class="form-control" id="user-repay-cardNum" placeholder="请输入银行卡号">
+                        <p id="userBuy-cardNum-error" class="notice">银行卡号不能为空</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-repay-cardPwd">密码</label>
+                        <input type="password" class="form-control" id="user-repay-cardPwd" placeholder="请输入密码">
+                        <p id="userBuy-cardPwd-error" class="notice">密码不能为空</p>
+                    </div>
+                </div>
+
+                <div id="repay-amount"><b>金额：</b>&nbsp;&nbsp;90元</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="repayConfirmClick()">确认支付</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="refundModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myRefundLabel">退款详情</h4>
+            </div>
+            <div class="modal-body" id="refundInformation">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="refundCancelClick()">取消</button>
+                <button type="button" class="btn btn-primary" onclick="refundConfirmClick()">确认退票</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
