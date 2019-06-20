@@ -2,7 +2,7 @@ package com.example.cinema.vo;
 
 import java.sql.Date;
 
-public class StaffForm {
+public class StaffVO {
     /**
      * id
      */
