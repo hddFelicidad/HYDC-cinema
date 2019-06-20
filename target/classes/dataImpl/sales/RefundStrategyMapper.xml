@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.sales.RefundStrategyMapper">
+    <insert id="insertRefundStrategy" parameterType="com.example.cinema.po.RefundStrategy"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into refundstrategy(refundstrategy_name,description,limitedTime,bookingCharge)
+        values(#{name},#{description},#{limitedTime},#{bookingCharge})
+    </insert>
+    <insert id="insertRefundStrategyAndMovie">
+        insert into refundstrategy_movieid(refundstrategy_id,movie_id) values
+        <foreach collection="movieId" item="item" index="index"
+                 separator=",">
+            (#{refundStrategyId},#{item})
+        </foreach>
+    </insert>
+
+    <select id="selectAllRefundStrategy" resultMap="RefundStrategy">
+        select
+            *
+        from
+            refundstrategy r
+        left join
+            refundstrategy_movieid rm
+        on
+            r.id=rm.refundstrategy_id
+        left join
+            movie m
+        on
+            rm.movie_id=m.id
+    </select>
+    <select id="selectRefundStrategyByMovieId" resultMap="RefundStrategy">
+        select
+            *
+        from
+            refundstrategy r
+        left join
+            refundstrategy_movieid rm
+        on
+            r.id=rm.refundstrategy_id
+        left join
+            movie m
+        on
+            rm.movie_id=m.id
+
+        where rm.movie_id=#{movieId}
+    </select>
+    <select id="selectRefundStrategyById" resultMap="RefundStrategy">
+        select
+            *
+        from
+            refundstrategy r
+        left join
+            refundstrategy_movieid rm
+        on
+            r.id=rm.refundstrategy_id
+        left join
+            movie m
+        on
+            rm.movie_id=m.id
+
+        where r.id=#{id}
+    </select>
+
+    <update id="updateRefundStrategy" parameterType="com.example.cinema.po.RefundStrategy">
+        update refundstrategy set refundstrategy_name = #{name}, description = #{description}, limitedTime = #{limitedTime}, bookingCharge=#{bookingCharge}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteRefundStrategy">
+        delete from refundstrategy where id=#{id}
+    </delete>
+
+    <delete id="deleteRefundStrategyAndMovie">
+        delete from refundstrategy_movieid where refundstrategy_id=#{id}
+    </delete>
+
+    <resultMap id="RefundStrategy" type="com.example.cinema.po.RefundStrategy">
+        <result column="id" property="id"></result>
+        <result column="refundstrategy_name" property="name"></result>
+        <result column="description" property="description"></result>
+        <result column="limitedTime" property="limitedTime"></result>
+        <result column="bookingCharge" property="bookingCharge"></result>
+        <collection property="movieList" ofType="com.example.cinema.po.Movie">
+            <id column="movie_id" property="id"></id>
+            <result column="poster_url" property="posterUrl"></result>
+            <result column="screen_writer" property="screenWriter"></result>
+            <result column="start_date" property="startDate"></result>
+            <result column="end_date" property="endDate"></result>
+            <result column="name" property="name"></result>
+            <result column="director" property="director"></result>
+            <result column="type" property="type"></result>
+            <result column="country" property="country"></result>
+            <result column="language" property="language"></result>
+            <result column="length" property="length"></result>
+            <result column="description" property="description"></result>
+            <result column="status" property="status"></result>
+            <result column="starring" property="starring"></result>
+        </collection>
+    </resultMap>
+
+</mapper>

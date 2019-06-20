@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.promotion.VIPCardMapper">
+    <insert id="insertOneCard" parameterType="com.example.cinema.po.VIPCard"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into vip_card(user_id,balance,target_money,gift_money,price,total_amount,last_order_date)
+        values(#{userId}, #{balance},#{targetMoney},#{giftMoney},#{price},#{totalAmount},#{lastOrderDate})
+    </insert>
+
+    <select id="selectCardById" resultMap="VIPCard">
+        select * from vip_card where id=#{id}
+    </select>
+
+    <select id="selectCardByUserId" resultMap="VIPCard">
+        select * from vip_card where user_id=#{userId}
+    </select>
+
+    <select id="selectAllVIPCard" resultMap="VIPCard">
+        select * from vip_card
+    </select>
+
+    <resultMap id="VIPCard" type="com.example.cinema.po.VIPCard">
+        <result column="join_time" property="joinDate"></result>
+        <result column="id" property="id"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="balance" property="balance"></result>
+        <result column="target_money" property="targetMoney"></result>
+        <result column="gift_money" property="giftMoney"></result>
+        <result column="price" property="price"></result>
+        <result column="total_amount" property="totalAmount"></result>
+        <result column="last_order_date" property="lastOrderDate"></result>
+    </resultMap>
+
+    <update id="updateCardBalance" >
+        update vip_card set balance = #{balance} where id=#{id}
+    </update>
+
+    <update id="updateCardTotalAmount" >
+        update vip_card set total_amount= #{totalAmount} where id=#{id}
+    </update>
+
+    <update id="updateCardLastOrderDate">
+        update vip_card set last_order_date= #{lastOrderDate} where id=#{id}
+    </update>
+
+    <delete id="deleteCardById">
+        delete from vip_card where id=#{id}
+    </delete>
+
+
+</mapper>

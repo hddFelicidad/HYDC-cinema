@@ -1,0 +1,136 @@
+body{
+    background: #fcfffe;
+}
+.container{
+    margin: 0 auto;
+}
+.main-container{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height: auto;
+    min-height: 700px;
+}
+.info-container{
+    margin: 0 auto;
+    border: 1px solid #e1e1e1;
+    position: relative;
+}
+.info-container .user-profile-nav{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    height: inherit;
+    width: 200px;
+    background: #f4f3f4;
+    text-align: center;
+    border: 1px solid #e1e1e1;
+}
+
+.info-container .user-profile-nav h1{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    color: #222222;
+    font-weight: 400;
+}
+.info-container .user-profile-nav a.active{
+    color: #ffffff;
+    background-color: #1caf9a;
+}
+
+.info-container .user-profile-nav a{
+    display: block;
+    font-weight: 400;
+    color: #333333;
+    height: 40px;
+    width: 202px;
+    margin-left: -1px;
+    line-height: 40px;
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
+}
+.info-container .consumption-records{
+    float: left;
+    margin-left: 200px;
+    padding-left: 40px;
+    width: 950px;
+}
+.info-container .consumption-records .profile-title{
+    padding: 26px 0;
+    color: #1caf9a;
+    font-size: 18px;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 30px;
+}
+.order-box{
+    border: 1px solid #e5e5e5;
+    margin: 0 40px 30px 0;
+}
+.order-box .order-header{
+    background-color: #f7f7f7;
+    font-size: 14px;
+    padding: 16px 20px;
+}
+.order-box .order-header .order-date {
+    color: #333;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.order-box .order-header .order-id {
+    color: #999;
+}
+
+.order-box .order-body{
+    padding: 20px;
+    padding-right: 0;
+}
+.order-box .order-body .poster{
+    border: 2px solid #ffffff;
+    margin-right: 11px;
+    font-size: 0;
+}
+.order-box .order-body>div {
+    display: inline-block;
+    vertical-align: top;
+}
+.order-box .order-body .poster img {
+    width: 66px;
+    height: 91px;
+}
+.order-box .order-body .order-content {
+    width: 49%;
+}
+.order-box .order-body .movie-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 4px 0 7px -6px;
+}
+.order-box .order-body .cinema-name, .order-box .order-body .hall-ticket {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 4px;
+}
+.order-box .order-body .show-time {
+    font-size: 12px;
+    color: #f03d37;
+}
+.order-box .order-body .actions, .order-box .order-body .order-price, .order-box .order-body .order-status {
+    font-size: 14px;
+    color: #333;
+    width: 12%;
+    line-height: 95px;
+}
+.order-box .order-body .actions {
+    text-align: center;
+}
+.order-box .order-body .actions .order-detail {
+    color: #333;
+}
+a {
+    text-decoration: none;
+}
+

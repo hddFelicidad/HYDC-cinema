@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电影管理</title>
+    <!-- 引入css样式文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminStaff.css"/>
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <!-- font-asesome图标库 -->
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+
+
+    <!-- 引入js脚本文件 -->
+    <!-- jquery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/adminStaffManage.js"></script>
+
+    <script>
+        function staffFormReset(){
+            document.getElementById("staffForm").reset();
+        }
+    </script>
+
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/manage"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation"><a href="/admin/vip/manage"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/refund/strategy"><i class="icon-heart-empty"></i> 退票管理</a></li>
+            <li role="presentation" class="active"><a href="#"><i class="icon-user"></i> 员工管理</a></li>
+        </ul>
+    </div>
+    <!-- 员工列表 -->
+    <div class="content-container" id="staff-list" style="display: none">
+        <div class="content-header">
+            <span class="title gray-text">员工管理</span>
+            <button type="button" class="btn btn-primary" onclick="staffFormReset()" data-backdrop="static" data-toggle="modal" data-target="#staffModal"><i class="icon-plus-sign"></i> 新增员工</button>
+        </div>
+        <div class="content-staff">
+            <div class="card">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>职务</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 员工详细信息 -->
+    <div class="content-container" id="staff-detail" style="display: none">
+        <div class="detail-content-header">
+            <button type="button" onclick="returnToList()" class="btn btn-link"> <返回 </button>
+            <span class="title gray-text">员工详细信息记录</span>
+            <div>
+                <button type="button" onclick="setStaffEditForm()" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#staffEditModal">修改</button>
+                <button type="button" onclick="deleteStaff()" class="btn btn-primary">删除</button>
+            </div>
+        </div>
+
+        <div class="staff-detail-info">
+            <div class="staff-detail-info-item odd" data-info="name">
+                <span class="item-title">姓名：</span>
+                <span class="item-info" id="item-name">胡丹丹</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="gender">
+                <span class="item-title">性别：</span>
+                <span class="item-info" id="item-gender">女</span>
+            </div>
+            <div class="staff-detail-info-item odd" data-info="nation">
+                <span class="item-title">民族：</span>
+                <span class="item-info" id="item-nation">汉</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="idnumber">
+                <span class="item-title">身份证号：</span>
+                <span class="item-info" id="item-id-number">342425199909227128</span>
+            </div>
+            <div class="staff-detail-info-item odd" data-info="birth">
+                <span class="item-title">出生日期：</span>
+                <span class="item-info" id="item-birth">1999年09月22日</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="age">
+                <span class="item-title">年龄：</span>
+                <span class="item-info" id="item-age">18</span>
+            </div>
+            <div class="staff-detail-info-item odd" data-info="hireDate">
+                <span class="item-title">入职时间：</span>
+                <span class="item-info" id="item-hire-date">2019年5月20日</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="position">
+                <span class="item-title">职务：</span>
+                <span class="item-info" id="item-position">管理员</span>
+            </div>
+            <div class="staff-detail-info-item odd" data-info="phone">
+                <span class="item-title">联系电话：</span>
+                <span class="item-info" id="item-phone">18912939740</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="address">
+                <span class="item-title">家庭住址：</span>
+                <span class="item-info" id="item-address">仙林大道163号南京大学</span>
+            </div>
+            <div class="staff-detail-info-item odd" data-info="userName">
+                <span class="item-title">员工账号：</span>
+                <span class="item-info" id="item-user-name">test</span>
+            </div>
+            <div class="staff-detail-info-item even" data-info="password">
+                <span class="item-title">员工密码：</span>
+                <span class="item-info" id="item-password">12345678</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="staffModal" tabindex="-1" role="dialog" aria-labelledby="staffModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="staffModalLabel">新增员工</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="staffForm" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-name-input"><span class="error-text">*</span>姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-name-input" placeholder="请输入员工姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-gender-input"><span class="error-text">*</span>性别</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="staff-gender-input">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-nation-input"><span class="error-text">*</span>民族</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-nation-input" placeholder="请输入员工民族">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-idnumber-input"><span class="error-text">*</span>身份证号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-idnumber-input" placeholder="请输入员工身份证号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-birth-input"><span class="error-text">*</span>出生日期</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="staff-birth-input" placeholder="请输入员工出生日期">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-age-input"><span class="error-text">*</span>年龄</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="staff-age-input" placeholder="请输入员工年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-hire-date-input"><span class="error-text">*</span>入职时间</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="staff-hire-date-input" placeholder="请输入员工入职时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-position-input"><span class="error-text">*</span>职务</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-position-input" placeholder="请输入员工职务">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-phone-input"><span class="error-text">*</span>联系电话</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-phone-input" placeholder="请输入员工联系电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-address-input"><span class="error-text">*</span>家庭住址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-address-input" placeholder="请输入员工家庭住址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-user-name-input"><span class="error-text">*</span>员工账户</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-user-name-input" placeholder="请输入员工账户">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-password-input"><span class="error-text">*</span>密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-password-input" placeholder="请输入员工密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="staff-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="staffEditModal" tabindex="-1" role="dialog" aria-labelledby="staffEditModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="staffEditModalLabel">修改员工信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-name-input"><span class="error-text">*</span>姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-name-input" placeholder="请输入员工姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-gender-input"><span class="error-text">*</span>性别</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="staff-edit-gender-input">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-nation-input"><span class="error-text">*</span>民族</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-nation-input" placeholder="请输入员工民族">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-idnumber-input"><span class="error-text">*</span>身份证号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-idnumber-input" placeholder="请输入员工身份证号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-birth-input"><span class="error-text">*</span>出生日期</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="staff-edit-birth-input" placeholder="请输入员工出生日期">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-age-input"><span class="error-text">*</span>年龄</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="staff-edit-age-input" placeholder="请输入员工年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-hire-date-input"><span class="error-text">*</span>入职时间</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="staff-edit-hire-date-input" placeholder="请输入员工入职时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-position-input"><span class="error-text">*</span>职务</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-position-input" placeholder="请输入员工职务">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-phone-input"><span class="error-text">*</span>联系电话</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-phone-input" placeholder="请输入员工联系电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-address-input"><span class="error-text">*</span>家庭住址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-address-input" placeholder="请输入员工家庭住址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-user-name-input"><span class="error-text">*</span>员工账户</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-user-name-input" placeholder="请输入员工账户">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="staff-edit-password-input"><span class="error-text">*</span>密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="staff-edit-password-input" placeholder="请输入员工密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="staff-edit-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

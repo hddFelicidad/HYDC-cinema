@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.sales.OrderMapper">
+    <insert id="insertOrder" parameterType="com.example.cinema.po.Order"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into `order`(user_id, state, used_coupon_id, origin_money, real_money, schedule_time,seat, movie_name, poster_url)
+        values(#{userId},#{state},#{usedCoupon.id},#{originMoney},#{realMoney},#{scheduleTime},#{seats},#{movieName},#{posterUrl})
+    </insert>
+
+    <insert id="insertOrderTicket" >
+        insert into order_ticket(order_id, ticket_id)
+        values(#{orderId},#{ticketId})
+    </insert>
+
+    <insert id="insertOrderGiftCoupon" >
+        insert into order_giftCoupon(order_id, giftCoupon_id)
+        values(#{orderId},#{giftCouponId})
+    </insert>
+
+    <select id="selectOrderById" resultMap="Order">
+        select *
+        from `order` o
+                 JOIN (order_ticket ot
+                   left join
+                   ticket t
+                   on ot.ticket_id=t.id
+                   )
+                   on o.id=ot.order_id
+                 JOIN (order_giftCoupon ogC
+                   left join
+                   coupon c
+                   on ogC.giftCoupon_id=c.id
+                   )
+                   on o.id=ogC.order_id
+        where o.id=#{id}
+        order by o.time desc
+
+
+    </select>
+    <select id="selectOrderByIdWithoutGiftCoupon" resultMap="Order">
+        select *
+        from `order` o
+                 JOIN (order_ticket ot
+                   left join
+                   ticket t
+                   on ot.ticket_id=t.id
+                   )
+                   on o.id=ot.order_id
+        where o.id=#{id}
+        order by o.time desc
+
+
+    </select>
+
+    <select id="selectOrdersByUserId" resultMap="Order">
+        select *
+        from `order` o
+                 JOIN (order_ticket ot
+            left join
+            ticket t
+            on ot.ticket_id=t.id
+            )
+                      on o.id=ot.order_id
+                 JOIN (order_giftCoupon ogC
+            left join
+            coupon c
+            on ogC.giftCoupon_id=c.id
+            )
+                      on o.id=ogC.order_id
+        where o.user_id=#{userId} and o.state!=2
+        order by o.TIME desc
+    </select>
+    <select id="selectOrdersByUserIdWithoutGiftCoupon" resultMap="Order">
+        select *
+        from `order` o
+                 JOIN (order_ticket ot
+            left join
+            ticket t
+            on ot.ticket_id=t.id
+            )
+                      on o.id=ot.order_id
+        where o.user_id=#{userId} and o.state!=2
+        order by o.TIME desc
+    </select>
+
+    <update id="updateOrderState">
+        update `order` set state = #{state} where id=#{orderId}
+    </update>
+    <update id="updateOrder" parameterType="com.example.cinema.po.Order">
+        update `order` set state=#{state},used_coupon_id=#{usedCoupon.id},real_money=#{realMoney},vipcard_id=#{VIPCardId}
+        where id=#{id}
+    </update>
+
+
+    <delete id="deleteTicketsForOrder">
+        delete from order_ticket where order_id=#{orderId}
+    </delete>
+    <delete id="deleteTicketsForOrder2">
+        delete from ticket where id=#{ticketId}
+    </delete>
+    <delete id="deleteCouponsForOrder">
+        delete from order_giftCoupon where order_id=#{orderId}
+    </delete>
+    <delete id="deleteCouponsForOrder2">
+        delete from coupon where id=#{couponId}
+    </delete>
+    <delete id="deleteCouponsForOrder3">
+        delete from coupon_user where coupon_id=#{couponId}
+    </delete>
+
+    <resultMap id="Order" type="com.example.cinema.po.Order">
+        <result column="id" property="id"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="time" property="time"></result>
+        <result column="state" property="state"></result>
+        <result column="origin_money" property="originMoney"></result>
+        <result column="real_money" property="realMoney"></result>
+        <result column="schedule_time" property="scheduleTime"></result>
+        <result column="seat" property="seats"></result>
+        <result column="movie_name" property="movieName"></result>
+        <result column="poster_url" property="posterUrl"></result>
+        <result column="vipcard_id" property="VIPCardId"></result>
+        <association property="usedCoupon" column="used_coupon_id" select="com.example.cinema.data.promotion.CouponMapper.selectById">
+        </association>
+        <collection property="tickets" ofType="com.example.cinema.po.Ticket">
+            <id column="ticket_id" property="id"></id>
+            <result column="schedule_id" property="scheduleId"></result>
+            <result column="user_id" property="userId"></result>
+            <result column="column_index" property="columnIndex"></result>
+            <result column="row_index" property="rowIndex"></result>
+            <result column="state" property="state"></result>
+            <result column="time" property="time"></result>
+        </collection>
+        <collection property="giftCoupons" ofType="com.example.cinema.po.Coupon">
+            <id column="giftCoupon_id" property="id"></id>
+            <result column="description" property="description"></result>
+            <result column="name" property="name"></result>
+            <result column="target_amount" property="targetAmount"></result>
+            <result column="discount_amount" property="discountAmount"></result>
+            <result column="start_time" property="startTime"></result>
+            <result column="end_time" property="endTime"></result>
+        </collection>
+    </resultMap>
+
+    <update id="cleanExpiredOrder">
+        update `order` SET  state =2 WHERE minute(timediff(now(),time))>15 and state=0;
+    </update>
+
+</mapper>

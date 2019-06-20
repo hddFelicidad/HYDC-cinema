@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.management.StaffMapper">
+    <insert id="insertOneStaff" parameterType="com.example.cinema.vo.StaffForm"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into staff(name, gender, nation, idnumber, birth, age, hiredate, position, phone, address, username, password)
+        values (#{name},#{gender},#{nation},#{idnumber},#{birth},#{age},#{hireDate},#{position},#{phone},#{address},#{userName},#{password})
+    </insert>
+    
+    <select id="selectAllStaff" resultMap="Staff">
+        select * from staff
+    </select>
+
+    <select id="selectStaffById" resultMap="Staff">
+        select * from staff where id = #{staffId}
+    </select>
+
+    <delete id="deleteStaff">
+        delete from staff where id=#{id}
+    </delete>
+    
+    <update id="updateStaff" parameterType="com.example.cinema.vo.StaffForm">
+        update staff set name = #{name},gender=#{gender}, nation=#{nation},idnumber=#{idnumber},birth = #{birth},age=#{age},hiredate=#{hireDate},
+        position=#{position},phone=#{phone},address=#{address},username=#{userName},password=#{password}
+        where id = #{id}
+    </update>
+
+    <resultMap id="Staff" type="com.example.cinema.po.Staff">
+    </resultMap>
+
+</mapper>
