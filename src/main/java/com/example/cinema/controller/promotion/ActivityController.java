@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-/**
- * Created by liying on 2019/4/20.
+/**活动管理
+ * @author poh
+ * @date 2019/6/5 8:13 PM
  */
 @RestController
 @RequestMapping("/activity")

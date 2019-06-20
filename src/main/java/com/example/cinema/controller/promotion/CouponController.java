@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by liying on 2019/4/16.
+/**优惠劵管理
+ * @author poh
+ * @date 2019/6/6 11:30 AM
  */
 @RestController
 @RequestMapping("/coupon")

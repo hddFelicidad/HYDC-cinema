@@ -1,5 +1,7 @@
 package com.example.cinema.po;
 
+import com.example.cinema.vo.VIPStrategyVO;
+
 public class VIPStrategy {
     /**
      * VIP策略id
@@ -21,6 +23,16 @@ public class VIPStrategy {
      * 购买该vip卡所需金额
      */
     private double price;
+
+    public VIPStrategyVO toVO(){
+        VIPStrategyVO vo=new VIPStrategyVO();
+        vo.setId(this.id);
+        vo.setName(this.name);
+        vo.setPrice(this.price);
+        vo.setGiftMoney(this.giftMoney);
+        vo.setTargetMoney(this.targetMoney);
+        return vo;
+    }
 
     public int getId() {
         return id;

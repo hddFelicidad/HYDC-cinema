@@ -14,6 +14,9 @@ import java.util.List;
 
 @Service
 public class VIPStrategyServiceImpl implements VIPStrategyService {
+    private static final String TARGET_ERROR_MESSAGE="目标金额需大于0";
+    private static final String GIFT_ERROR_MESSAGE="赠送金额需大于0";
+    private static final String PRICE_ERROR_MESSAGE="会员卡价格需大于0";
     @Autowired
     VIPStrategyMapper vipStrategyMapper;
 
@@ -25,6 +28,9 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
             vipStrategy.setGiftMoney(vipStrategyForm.getGiftMoney());
             vipStrategy.setPrice(vipStrategyForm.getPrice());
             vipStrategy.setTargetMoney(vipStrategyForm.getTargetMoney());
+            if (checkVIPStrategyInfo(vipStrategyForm)!=null){
+                return ResponseVO.buildFailure(checkVIPStrategyInfo(vipStrategyForm));
+            }
             vipStrategyMapper.insertOneVIPStrategy(vipStrategy);
             return ResponseVO.buildSuccess(vipStrategyMapper.selectVIPStrategyById(vipStrategy.getId()));
         }catch (Exception e) {
@@ -50,6 +56,9 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
     @Override
     public ResponseVO updateVIPStrategy(VIPStrategyForm vipStrategyForm){
         try {
+            if (checkVIPStrategyInfo(vipStrategyForm)!=null){
+                return ResponseVO.buildFailure(checkVIPStrategyInfo(vipStrategyForm));
+            }
             vipStrategyMapper.updateVIPStrategy(vipStrategyForm);
             return ResponseVO.buildSuccess();
         }catch (Exception e) {
@@ -88,6 +97,17 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
     public VIPStrategy selectVIPStrategyByAmount(double targetMoney,double giftMoney){
         return vipStrategyMapper.selectVIPStrategyByAmount(targetMoney,giftMoney);
     }
-
+    private String checkVIPStrategyInfo(VIPStrategyForm vipStrategyForm){
+        if (vipStrategyForm.getPrice()<0){
+            return PRICE_ERROR_MESSAGE;
+        }
+        else if (vipStrategyForm.getTargetMoney()<0){
+            return TARGET_ERROR_MESSAGE;
+        }
+        else if (vipStrategyForm.getGiftMoney()<0){
+            return GIFT_ERROR_MESSAGE;
+        }
+        return null;
+    }
 
 }

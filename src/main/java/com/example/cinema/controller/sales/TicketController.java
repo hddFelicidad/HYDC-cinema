@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by liying on 2019/4/16.
+/**用户购票管理
+ * @author bjh
+ * @date 2019/6/14 5:16 PM
  */
 @RestController
 @RequestMapping("/ticket")

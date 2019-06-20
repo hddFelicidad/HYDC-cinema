@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.management.ValueExp;
 
 /**电影管理
- * @author fjj
- * @date 2019/3/12 6:17 PM
+ * @author poh
+ * @date 2019/5/12 6:17 PM
  */
 @RestController
 public class MovieController {

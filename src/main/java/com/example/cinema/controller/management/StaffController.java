@@ -5,8 +5,10 @@ import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.StaffForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-
+/**员工管理
+ * @author poh
+ * @date 2019/6/11 6:00 PM
+ */
 @RestController
 public class StaffController {
     @Autowired

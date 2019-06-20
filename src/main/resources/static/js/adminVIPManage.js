@@ -36,17 +36,17 @@ $(document).ready(function() {
                 "           <span>赠送金额：" + strategy.giftMoney + "</span>" +
                 "       </div>" +
                 "    </div>" +
-                "    <div class='strategy-price primary-bg'>" +
+                "    <div class='strategy-price'>" +
                 "        <h1 class='price-show'>￥"+strategy.price+"</h1>" +
                 "        <div class='strategy-operation' id='strategy-operations"+strategy.id+"'>" +
-
                 "        </div>" +
                 "    </div>" +
                 "</div>";
 
             $('.content-vipStrategy').append(strategiesDomStr);
-            var btn0 = document.createElement("button");
-            btn0.innerHTML = "<button type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#strategyEditModal'><span>修改</span></button>";
+            var btn0 = document.createElement("div");
+            btn0.className='vip-card-btn';
+            btn0.innerHTML = "<a type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#strategyEditModal'><span>修改</span></a>";
             btn0.onclick = function () {
                 $("#strategy-edit-name-input").val(strategy.name);
                 $("#strategy-edit-price-input").val(strategy.price);
@@ -55,10 +55,11 @@ $(document).ready(function() {
                 $('#strategyEditModal')[0].dataset.strategyId = strategy.id;
             };
             $('#strategy-operations'+strategy.id).append(btn0);
-            var btn1 = document.createElement("button");
-            btn1.innerHTML = "<button type='button' class='strategy-delete btn btn-default' ><span>删除</span></button>";
+            var btn1 = document.createElement("div");
+            btn1.className='vip-card-btn';
+            btn1.innerHTML = "<a type='button' class='strategy-delete btn btn-default' ><span>下架</span></a>";
             btn1.onclick = function () {
-                var r = confirm("确认要删除该会员策略吗");
+                var r = confirm("确认要下架该会员卡吗");
                 if (r) {
                     deleteRequest(
                         '/vipStrategy/delete?id=' + strategy.id,

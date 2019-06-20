@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cinema.data.sales.RechargeMapper">
+    <insert id="insertRecharge" parameterType="com.example.cinema.po.Recharge"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into recharge(user_id,recharge_money, gift_money, balance)
+        values(#{userId},#{rechargeMoney},#{giftMoney},#{balance})
+    </insert>
+    <select id="selectById" resultMap="Recharge">
+        select * from recharge where id=#{id}
+        order by recharge.trade_time desc
+    </select>
+
+    <select id="selectByUserId" resultMap="Recharge">
+        select * from recharge where user_id=#{userId}
+        order by recharge.trade_time desc 
+    </select>
+
+    <resultMap id="Recharge" type="com.example.cinema.po.Recharge">
+        <id column="id" property="id"></id>
+        <result column="user_id" property="userId"></result>
+        <result column="trade_time" property="tradeTime"></result>
+        <result column="recharge_money" property="rechargeMoney"></result>
+        <result column="gift_money" property="giftMoney"></result>
+        <result column="balance" property="balance"></result>
+    </resultMap>
+
+</mapper>

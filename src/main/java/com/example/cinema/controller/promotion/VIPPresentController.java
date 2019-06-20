@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Created by dxy on 2019/6/4.
+/**会员赠送优惠劵管理
+ * @author poh
+ * @date 2019/6/4 3：20 PM
  */
 @RestController()
 @RequestMapping("/present")

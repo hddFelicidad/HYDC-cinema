@@ -160,6 +160,7 @@ public class VIPServiceImpl implements VIPService, VIPServiceForBl {
                     valueVipStrategy=vipStrategy;
                 }
             }
+            VIPStrategyVO valueVipStrategyVO=valueVipStrategy.toVO();
             return ResponseVO.buildSuccess(valueVipStrategy);
         } catch (Exception e) {
             e.printStackTrace();

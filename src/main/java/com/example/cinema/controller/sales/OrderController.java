@@ -7,6 +7,10 @@ import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**用户订单管理
+ * @author bjh
+ * @date 2019/6/10 5:20 PM
+ */
 @RestController
 @RequestMapping("/order")
 public class OrderController {

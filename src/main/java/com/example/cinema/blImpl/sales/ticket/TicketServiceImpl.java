@@ -138,6 +138,8 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
             order.setScheduleTime(scheduleItem.getStartTime());
             order.setOriginMoney(totalPrice);
             order.setRealMoney(totalPrice);
+            //将-1(会员卡不存在)存入Order
+            order.setVIPCardId(-1);
             orderServiceForBl.insertOrder(order);
             for (Ticket ticket:ticketList){
                 orderServiceForBl.insertOrderTicket(order.getId(),ticket.getId());
@@ -176,61 +178,8 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
     @Transactional
     public ResponseVO completeTicket(List<Integer> id, int couponId) {
         try{
-            int userId=0;
-            int movieId=0;
-            if (couponId!=0){
-                Coupon coupon=couponServiceForBl.getCouponById(couponId);
-                double discountMoney=coupon.getDiscountAmount();
-                double originMoney=order.getOriginMoney();
-                double realMoney=sub(discountMoney,originMoney);
-                if (realMoney<0) {
-                    realMoney = 0;
-                }
-                order.setRealMoney(realMoney);
-                order.setUsedCoupon(coupon);
-                orderServiceForBl.updateOrder(order);
-            }
-            for (Integer a:id){
-                Ticket ticket=ticketMapper.selectTicketById(a);
-                ticketMapper.cleanExpiredTicket();
-                userId=ticket.getUserId();
-                if (ticket.getState()==0){
-                    ticketMapper.updateTicketState(a,1);
-                }
-                else if (ticket.getState()==2){
-                    return ResponseVO.buildFailure("失败");
-                }
-                int scheduleId=ticket.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO=ticket.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem=ticketWithScheduleVO.getSchedule();
-                movieId=scheduleItem.getMovieId();
-            }
-            List<Activity> activities=activityServiceForBl.getActivitiesByMovie(movieId);
-            List<Coupon> giftCoupons=new ArrayList<>();
-            if (activities!=null) {
-                for (Activity activity : activities) {
-                    Timestamp d = new Timestamp(System.currentTimeMillis());
-                    Timestamp startTime = activity.getStartTime();
-                    Timestamp endTime = activity.getEndTime();
-                    if (d.before(endTime) && d.after(startTime)) {
-                        Coupon giftCoupon=activity.getCoupon();
-                        couponService.issueCoupon(giftCoupon.getId(),userId);
-                        //order里添加赠送的优惠劵
-                        giftCoupons.add(giftCoupon);
-                    }
-                }
-            }
-            order.setGiftCoupons(giftCoupons);
-            //将-1(会员卡不存在)存入Order
-            order.setVIPCardId(-1);
-            orderServiceForBl.updateOrder(order);
-            orderServiceForBl.cleanExpiredOrder();
-            for (Coupon coupon:giftCoupons){
-                orderServiceForBl.insertOrderGiftCoupon(order.getId(),coupon.getId());
-            }
-            if (order.getState()==0){
-                orderServiceForBl.updateOrderState(order.getId(),1);
+            if (buyTicket(id).equals("票已超时")){
+                return ResponseVO.buildFailure("票已超时");
             }
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
@@ -293,82 +242,26 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
     public ResponseVO completeByVIPCard(List<Integer> id, int couponId) {
         try {
             double discount=0;
-            int userId = 0;
-            int movieId = 0;
-            if (couponId!=0){
-                Coupon coupon=couponServiceForBl.getCouponById(couponId);
-                double discountMoney=coupon.getDiscountAmount();
-                double originMoney=order.getOriginMoney();
-                double realMoney=sub(discountMoney,originMoney);
-                if (realMoney<0) {
-                    realMoney = 0;
-                }
-                order.setRealMoney(realMoney);
-                order.setUsedCoupon(coupon);
-                orderServiceForBl.updateOrder(order);
+            if (buyTicket(id).equals("票已超时")){
+                return ResponseVO.buildFailure("票已超时");
             }
-            for (Integer a : id) {
-                Ticket ticket = ticketMapper.selectTicketById(a);
-                ticketMapper.cleanExpiredTicket();
-                userId = ticket.getUserId();
-                if (ticket.getState() == 0) {
-                    ticketMapper.updateTicketState(a, 1);
-                } else if (ticket.getState() == 2) {
-                    return ResponseVO.buildFailure("失败");
-                }
-                int scheduleId = ticket.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO = ticket.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem = ticketWithScheduleVO.getSchedule();
-                movieId = scheduleItem.getMovieId();
-            }
-            List<Activity> activities = activityServiceForBl.getActivitiesByMovie(movieId);
-            List<Coupon> giftCoupons=new ArrayList<>();
-            if (activities != null) {
-                for (Activity activity : activities) {
-                    Timestamp d = new Timestamp(System.currentTimeMillis());
-                    Timestamp startTime = activity.getStartTime();
-                    Timestamp endTime = activity.getEndTime();
-                    if (d.before(endTime) && d.after(startTime)) {
-                        Coupon giftCoupon = activity.getCoupon();
-                        couponService.issueCoupon(giftCoupon.getId(), userId);
-                        giftCoupons.add(giftCoupon);
-                    }
-                }
-            }
-            order.setGiftCoupons(giftCoupons);
             //将会员卡id存入Order
             Ticket temp = ticketMapper.selectTicketById(id.get(0));
             int UserId = temp.getUserId();
             VIPCard vipCard = vipServiceForBl.getVIPCardByUserId(UserId);
-            order.setVIPCardId(vipCard.getId());
-
-            orderServiceForBl.updateOrder(order);
-            orderServiceForBl.cleanExpiredOrder();
-            for (Coupon coupon:giftCoupons){
-                orderServiceForBl.insertOrderGiftCoupon(order.getId(),coupon.getId());
-            }
-            if (order.getState()==0){
-                orderServiceForBl.updateOrderState(order.getId(),1);
-            }
-
             //获取会员卡信息
             if (vipCard == null) {
                 return ResponseVO.buildFailure("VIP卡不存在");
             } else {
+                order.setVIPCardId(vipCard.getId());
                 //更新会员卡信息
                 double newBalance = 0;
                 //计算电影票总价
-                int scheduleId = temp.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO = temp.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem = ticketWithScheduleVO.getSchedule();
-                double ticketPrice = scheduleItem.getFare();
-                ticketPrice = ticketPrice * id.size();
+                double totalPrice=order.getOriginMoney();
                 if (order.getUsedCoupon()!=null){
                     discount=order.getUsedCoupon().getDiscountAmount();
                 }
-                newBalance = vipCard.getBalance() - (ticketPrice - discount);
+                newBalance = vipCard.getBalance() - (totalPrice - discount);
                 if (newBalance < 0) {
                     for(Integer a :id) {
                         ticketMapper.updateTicketState(a, 0);
@@ -413,52 +306,17 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
     @Override
     public ResponseVO repay(int orderId){
         try {
-            int userId=0;
-            int movieId=0;
             Order order=orderServiceForBl.selectOrderById(orderId);
             if (order==null){
                 order=orderServiceForBl.selectOrderByIdWithoutGiftCoupon(orderId);
             }
             List<Ticket> tickets=order.getTickets();
+            List<Integer> ticketsId=new ArrayList<>();
             for (Ticket ticket:tickets){
-                ticketMapper.cleanExpiredTicket();
-                userId = ticket.getUserId();
-                if (ticket.getState() == 0) {
-                    int ticketId=ticket.getId();
-                    ticketMapper.updateTicketState(ticketId, 1);
-                } else if (ticket.getState() == 2) {
-                    return ResponseVO.buildFailure("失败");
-                }
-                int scheduleId = ticket.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO = ticket.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem = ticketWithScheduleVO.getSchedule();
-                movieId = scheduleItem.getMovieId();
+                ticketsId.add(ticket.getId());
             }
-            List<Activity> activities = activityServiceForBl.getActivitiesByMovie(movieId);
-            List<Coupon> giftCoupons=new ArrayList<>();
-            if (activities != null) {
-                for (Activity activity : activities) {
-                    Timestamp d = new Timestamp(System.currentTimeMillis());
-                    Timestamp startTime = activity.getStartTime();
-                    Timestamp endTime = activity.getEndTime();
-                    if (d.before(endTime) && d.after(startTime)) {
-                        Coupon giftCoupon = activity.getCoupon();
-                        couponService.issueCoupon(giftCoupon.getId(), userId);
-                        giftCoupons.add(giftCoupon);
-                    }
-                }
-            }
-            order.setGiftCoupons(giftCoupons);
-            //将-1(会员卡不存在)存入Order
-            order.setVIPCardId(-1);
-            orderServiceForBl.updateOrder(order);
-            orderServiceForBl.cleanExpiredOrder();
-            for (Coupon coupon:giftCoupons){
-                orderServiceForBl.insertOrderGiftCoupon(order.getId(),coupon.getId());
-            }
-            if (order.getState()==0){
-                orderServiceForBl.updateOrderState(order.getId(),1);
+            if (buyTicket(ticketsId).equals("票已超时")){
+                return ResponseVO.buildFailure("票已超时");
             }
             return ResponseVO.buildSuccess();
         }catch (Exception e) {
@@ -471,74 +329,35 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
     public ResponseVO repayByVIPCard(int orderId){
         try {
             double discount=0;
-            int userId=0;
-            int movieId=0;
             Order order=orderServiceForBl.selectOrderById(orderId);
             if (order==null){
                 order=orderServiceForBl.selectOrderByIdWithoutGiftCoupon(orderId);
             }
             List<Ticket> tickets=order.getTickets();
+            List<Integer> ticketsId=new ArrayList<>();
             for (Ticket ticket:tickets){
-                ticketMapper.cleanExpiredTicket();
-                userId = ticket.getUserId();
-                if (ticket.getState() == 0) {
-                    int ticketId=ticket.getId();
-                    ticketMapper.updateTicketState(ticketId, 1);
-                } else if (ticket.getState() == 2) {
-                    return ResponseVO.buildFailure("失败");
-                }
-                int scheduleId = ticket.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO = ticket.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem = ticketWithScheduleVO.getSchedule();
-                movieId = scheduleItem.getMovieId();
+                ticketsId.add(ticket.getId());
             }
-            List<Activity> activities = activityServiceForBl.getActivitiesByMovie(movieId);
-            List<Coupon> giftCoupons=new ArrayList<>();
-            if (activities != null) {
-                for (Activity activity : activities) {
-                    Timestamp d = new Timestamp(System.currentTimeMillis());
-                    Timestamp startTime = activity.getStartTime();
-                    Timestamp endTime = activity.getEndTime();
-                    if (d.before(endTime) && d.after(startTime)) {
-                        Coupon giftCoupon = activity.getCoupon();
-                        couponService.issueCoupon(giftCoupon.getId(), userId);
-                        giftCoupons.add(giftCoupon);
-                    }
-                }
+            if (buyTicket(ticketsId).equals("票已超时")){
+                return ResponseVO.buildFailure("票已超时");
             }
-            order.setGiftCoupons(giftCoupons);
             //将会员卡id存入Order
             Ticket temp =tickets.get(0);
             int UserId = temp.getUserId();
             VIPCard vipCard = vipServiceForBl.getVIPCardByUserId(UserId);
-            order.setVIPCardId(vipCard.getId());
-
-            orderServiceForBl.updateOrder(order);
-            orderServiceForBl.cleanExpiredOrder();
-            for (Coupon coupon:giftCoupons){
-                orderServiceForBl.insertOrderGiftCoupon(order.getId(),coupon.getId());
-            }
-            if (order.getState()==0){
-                orderServiceForBl.updateOrderState(order.getId(),1);
-            }
             //获取会员卡信息
             if (vipCard == null) {
                 return ResponseVO.buildFailure("VIP卡不存在");
             } else {
+                order.setVIPCardId(vipCard.getId());
                 //更新会员卡信息
                 double newBalance = 0;
                 //计算电影票总价
-                int scheduleId = temp.getScheduleId();
-                TicketWithScheduleVO ticketWithScheduleVO = temp.getWithScheduleVO();
-                ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
-                ScheduleItem scheduleItem = ticketWithScheduleVO.getSchedule();
-                double ticketPrice = scheduleItem.getFare();
-                ticketPrice = ticketPrice * tickets.size();
+                double totalPrice=order.getOriginMoney();
                 if (order.getUsedCoupon()!=null){
                     discount=order.getUsedCoupon().getDiscountAmount();
                 }
-                newBalance = vipCard.getBalance() - (ticketPrice - discount);
+                newBalance = vipCard.getBalance() - (totalPrice - discount);
                 if (newBalance < 0) {
                     for(Ticket ticket:tickets) {
                         int ticketId=ticket.getId();
@@ -573,11 +392,59 @@ public class TicketServiceImpl implements TicketService,TicketServiceForBl {
         return ticketMapper.selectTicketsBySchedule(scheduleId);
     }
 
-
+    private String buyTicket(List<Integer> id){
+        int userId=0;
+        int movieId=0;
+        for (Integer a:id){
+            Ticket ticket=ticketMapper.selectTicketById(a);
+            ticketMapper.cleanExpiredTicket();
+            userId=ticket.getUserId();
+            if (ticket.getState()==0){
+                ticketMapper.updateTicketState(a,1);
+            }
+            else if (ticket.getState()==2){
+                return "票已超时";
+            }
+            int scheduleId=ticket.getScheduleId();
+            TicketWithScheduleVO ticketWithScheduleVO=ticket.getWithScheduleVO();
+            ticketWithScheduleVO.setSchedule(scheduleServiceForBl.getScheduleItemById(scheduleId));
+            ScheduleItem scheduleItem=ticketWithScheduleVO.getSchedule();
+            movieId=scheduleItem.getMovieId();
+        }
+        List<Activity> activities=activityServiceForBl.getActivitiesByMovie(movieId);
+        List<Coupon> giftCoupons=new ArrayList<>();
+        if (activities!=null) {
+            for (Activity activity : activities) {
+                Timestamp d = new Timestamp(System.currentTimeMillis());
+                Timestamp startTime = activity.getStartTime();
+                Timestamp endTime = activity.getEndTime();
+                if (d.before(endTime) && d.after(startTime)) {
+                    Coupon giftCoupon=activity.getCoupon();
+                    couponService.issueCoupon(giftCoupon.getId(),userId);
+                    //order里添加赠送的优惠劵
+                    giftCoupons.add(giftCoupon);
+                }
+            }
+        }
+        order.setGiftCoupons(giftCoupons);
+        //将-1(会员卡不存在)存入Order
+        order.setVIPCardId(-1);
+        orderServiceForBl.updateOrder(order);
+        orderServiceForBl.cleanExpiredOrder();
+        for (Coupon coupon:giftCoupons){
+            orderServiceForBl.insertOrderGiftCoupon(order.getId(),coupon.getId());
+        }
+        if (order.getState()==0){
+            orderServiceForBl.updateOrderState(order.getId(),1);
+        }
+        return "成功";
+    }
 
     public double sub(double a,double b){
         BigDecimal a1=new BigDecimal(Double.toString(a));
         BigDecimal b1=new BigDecimal(Double.toString(b));
         return b1.subtract(a1).doubleValue();
     }
+
+
 }

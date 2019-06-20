@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>会员管理</title>
+    <link rel="stylesheet" type="text/css" href="/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/adminVIPList.css"/>
+
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/request.js"></script>
+    <script src="/js/adminVIPListManage.js"></script>
+</head>
+<body>
+<div class="main-container">
+    <div class="nav-left-container">
+        <div class="nav-user-container" style="margin-bottom: 50px;">
+            <img class="avatar-lg" src="/images/defaultAvatar.jpg" />
+            <p class="title">Admin</p>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="/admin/movie/manage"><i class="icon-film"></i> 电影管理</a></li>
+            <li role="presentation"><a href="/admin/session/manage"><i class="icon-calendar"></i> 排片管理</a></li>
+            <li role="presentation"><a href="/admin/promotion/manage"><i class="icon-gift"></i> 活动管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/manage"><i class="icon-cogs"></i> 影院管理</a></li>
+            <li role="presentation"><a href="/admin/cinema/statistic"><i class="icon-bar-chart"></i> 影院统计</a></li>
+            <li role="presentation" class="active"><a href="#"><i class="icon-credit-card"></i> 会员管理</a></li>
+            <li role="presentation"><a href="/admin/refund/strategy"><i class="icon-heart-empty"></i> 退票管理</a></li>
+            <li role="presentation"><a href="/admin/staff/manage"><i class="icon-user"></i> 员工管理</a></li>
+        </ul>
+    </div>
+    <div class="content-container">
+
+            <ul class ="nav nav-tabs" id="mytab">
+                <li ><a href="/admin/vip/manage">会员卡管理</a></li>
+                <li class="active"><a href="#">会员名单</a></li>
+            </ul>
+
+        <div class="card">
+            <!--<div class="btn-container">-->
+                <!--<button class='ai-sort btn btn-default' id="ai-sort" >智能排序</button>-->
+                <!--<button class='amount-sort btn btn-default' id="amount-sort">金额排序</button>-->
+                <!--<button class='date-sort btn btn-default' id="date-sort">日期排序</button>-->
+            <!--</div>-->
+            <div class="btn-group" style="margin: 20px">
+                <button id="sort-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    智能排序 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="ai-sort" href="#">智能排序</a></li>
+                    <li><a id="amount-sort" href="#">金额排序</a></li>
+                    <li><a id="date-sort" href="#">日期排序</a></li>
+                </ul>
+            </div>
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>会员卡名称</th>
+                        <th>会员名称</th>
+                        <th>消费金额</th>
+                        <th>办卡日期</th>
+                        <th>最后一次消费日期</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="selectVIP"    data-backdrop="static" data-toggle="modal" ><i class="icon-plus-sign"></i> 选择会员</button>
+        <button type="button" class="btn btn-primary"  id="selectStrategy"  data-target="#selectCouponModal" style='display:none' data-backdrop="static" data-toggle="modal" ><i class="icon-plus-sign"></i> 赠送优惠券</button>
+        <button type="button" class="btn btn-primary"  id="cancelSelectStartegy"  style='display:none' data-backdrop="static" data-toggle="modal" ><i class="icon-remove-sign"></i> 取消选择</button>
+
+    </div>
+</div>
+<div class="modal fade" id="selectCouponModal" tabindex="-1" role="dialog" aria-labelledby="strategyModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="strategyModalLabel">选择优惠券</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="selected-coupon-input">优惠券种类</label>
+                        <div class="col-sm-10">
+                            <select id="selected-coupon-input" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="strategy-form-btn">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
