@@ -2,112 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6d86dde-d752-45c6-8d46-2f1667dc88b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/junitgenerator-prj-settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/home/HomePageServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/com/example/cinema/blImpl/management/hall/HallServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/com/example/cinema/blImpl/promotion/coupon/CouponServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9b541e0a-e486-4dc0-8e52-9c3be93ce332.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9b541e0a-e486-4dc0-8e52-9c3be93ce332.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/cinema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/cinema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/bl/promotion/VIPStrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/bl/promotion/VIPStrategyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/hall/HallServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/movie/MovieServiceForBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/movie/MovieServiceForBl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/movie/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/movie/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/schedule/ScheduleServiceForBl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/schedule/ScheduleServiceForBl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/schedule/ScheduleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/schedule/ScheduleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/staff/StaffServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/management/staff/StaffServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/activity/ActivityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/activity/ActivityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/coupon/CouponServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/coupon/CouponServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vip/VIPServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vip/VIPServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vipstrategy/VIPStrategyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/promotion/vipstrategy/VIPStrategyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/refundstrategy/RefundStrategyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/refundstrategy/RefundStrategyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/ticket/TicketServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/ticket/TicketServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/statistics/MovieLikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/statistics/MovieLikeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/statistics/StatisticsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/statistics/StatisticsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/user/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/user/AccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/promotion/VIPStrategyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/controller/promotion/VIPStrategyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/HallMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/HallMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/MovieMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/MovieMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/ScheduleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/ScheduleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/StaffMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/management/StaffMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/ActivityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/ActivityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/CouponMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/CouponMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/VIPCardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/VIPCardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/VIPStrategyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/promotion/VIPStrategyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/RechargeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/RechargeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/RefundStrategyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/RefundStrategyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/sales/TicketMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/statistics/MovieLikeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/statistics/MovieLikeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/statistics/StatisticsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/data/statistics/StatisticsMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/po/VIPStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/po/VIPStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/vo/VIPStrategyForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/vo/VIPStrategyForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/vo/VIPStrategyVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/vo/VIPStrategyVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dataImpl/management/MovieMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dataImpl/management/MovieMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dataImpl/promotion/VIPStrategyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dataImpl/promotion/VIPStrategyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/adminVIP.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/adminVIP.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/movieList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/movieList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/userHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userMovieBuy.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/userMovieBuy.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminCinemaManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminRefundStrategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminRefundStrategy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminVIPListManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminVIPListManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminVIPManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminVIPManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/userHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/userMember.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminRefundStrategy.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminRefundStrategy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminStaffManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminStaffManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userMember.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userMember.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userMovieBuy.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userMovieBuy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userOrderDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userOrderDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/userRechargeRecord.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/userRechargeRecord.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/example/cinema/blImpl/promotion/CouponServiceImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/bl/promotion/VIPStrategyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/bl/promotion/VIPStrategyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/hall/HallServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/hall/HallServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/movie/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/movie/MovieServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/schedule/ScheduleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/schedule/ScheduleServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/staff/StaffServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/management/staff/StaffServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/activity/ActivityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/activity/ActivityServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/coupon/CouponServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/coupon/CouponServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vip/VIPServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vip/VIPServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vippresent/VIPPresentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vipstrategy/VIPStrategyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/promotion/vipstrategy/VIPStrategyServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/sales/ticket/TicketServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/sales/ticket/TicketServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/statistics/MovieLikeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/statistics/MovieLikeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/statistics/StatisticsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/statistics/StatisticsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/user/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/blImpl/user/AccountServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/controller/promotion/VIPStrategyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/controller/promotion/VIPStrategyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/data/promotion/VIPStrategyMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/data/promotion/VIPStrategyMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/po/VIPStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/po/VIPStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/vo/VIPStrategyForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/vo/VIPStrategyForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/cinema/vo/VIPStrategyVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/cinema/vo/VIPStrategyVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/management/MovieMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/management/MovieMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/promotion/VIPStrategyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/promotion/VIPStrategyMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataImpl/sales/RechargeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataImpl/sales/RechargeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/adminVIP.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/adminVIP.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/userHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/userHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/userMovieBuy.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/userMovieBuy.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/adminCinemaManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/adminCinemaManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/adminRefundStrategy.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/adminRefundStrategy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/adminVIPListManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/adminVIPListManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/adminVIPManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/adminVIPManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/userHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/userHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/userMember.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/userMember.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adminRefundStrategy.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adminRefundStrategy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/adminStaffManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adminStaffManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/userHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/userHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/userMovieBuy.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/userMovieBuy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/userOrderDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/userOrderDetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/userRechargeRecord.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/userRechargeRecord.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/cinema/blImpl/promotion/CouponServiceImplTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/order/OrderServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -164,11 +59,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userMember.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+            <state relative-caret-position="230">
+              <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/refundstrategy/RefundStrategyServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/order/OrderServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="158" column="58" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -241,6 +154,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/movieList.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/userMember.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/userMember.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/order/OrderServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -394,6 +308,38 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="blImpl" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HYDC-cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="blImpl" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HYDC-cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="blImpl" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="refundstrategy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HYDC-cinema" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -439,15 +385,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HYDC-cinema" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cinema" type="b2602c69:ProjectViewProjectNode" />
@@ -515,7 +452,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561075063522" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561076342296" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -665,7 +602,7 @@
       <workItem from="1561033880713" duration="2888000" />
       <workItem from="1561058224136" duration="2045000" />
       <workItem from="1561060371436" duration="774000" />
-      <workItem from="1561061197060" duration="13160000" />
+      <workItem from="1561061197060" duration="13793000" />
     </task>
     <servers />
   </component>
@@ -702,7 +639,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40420000" />
+    <option name="totallyTimeSpent" value="41053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="23" width="1281" height="861" extended-state="0" />
@@ -748,20 +685,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/po/Coupon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/vo/CouponVO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/vo/CouponForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="618">
@@ -1112,8 +1035,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/userMember.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        <state relative-caret-position="230">
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/refundstrategy/RefundStrategyServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/cinema/blImpl/sales/order/OrderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="158" column="58" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
         </state>
       </provider>
     </entry>

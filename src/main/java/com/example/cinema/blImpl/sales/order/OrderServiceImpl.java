@@ -156,7 +156,7 @@ public class OrderServiceImpl implements OrderService,OrderServiceForBl {
                     vipServiceForBl.updateCardBalance(order.getVIPCardId(),newBalance);
                 }
 
-                return ResponseVO.buildSuccess("无退票策略，退票成功");
+                return ResponseVO.buildSuccess("无退票策略，退票失败");
             }
             RefundStrategy refundStrategy= refundStrategyService.selectRefundStrategyByMovieId(scheduleItem.getMovieId());
             double servicePriceNow=(double)Math.round((refundStrategy.getBookingCharge())*(order.getRealMoney()))/100;
