@@ -87,6 +87,7 @@ li,ul {
 .movie-post{
 	width: 139px;
 	height: 191px;
+	cursor: pointer;
 }
 .list-item{
 	display: inline-block;

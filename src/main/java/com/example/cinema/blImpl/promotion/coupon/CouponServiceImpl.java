@@ -2,7 +2,6 @@ package com.example.cinema.blImpl.promotion.coupon;
 
 import com.example.cinema.bl.promotion.CouponService;
 import com.example.cinema.data.promotion.CouponMapper;
-import com.example.cinema.data.sales.TicketMapper;
 import com.example.cinema.po.Coupon;
 import com.example.cinema.vo.CouponForm;
 import com.example.cinema.vo.CouponVO;
@@ -13,20 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liying on 2019/4/17.
- */
+
 @Service
 public class CouponServiceImpl implements CouponService, CouponServiceForBl {
 
     @Autowired
     CouponMapper couponMapper;
-
-    @Autowired
-    TicketMapper ticketMapper;
-
-
-
 
     @Override
     public ResponseVO getCouponsByUser(int userId) {

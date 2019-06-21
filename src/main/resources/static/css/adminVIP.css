@@ -3,15 +3,13 @@
     justify-content: space-between;
 }
 .content-vipStrategy{
-    display: flex;
-    justify-content: space-between;
     width: 100%;
 }
 .strategy-container{
-    display: flex;
-    width: 49%;
+    display: inline-flex;
+    width: 48%;
     min-height: 200px;
-    margin: 20px 0;
+    margin: 20px 1%;
 }
 .strategy-card {
     padding: 20px;
@@ -22,6 +20,15 @@
     border-radius: 10px 0px 0px 10px;
     background: linear-gradient(to left, #defbd2 , #c8e3f1);
 
+}
+.strategy-off-card{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 60%;
+    justify-content: space-around;
+    border-radius: 10px 0px 0px 10px;
+    background: linear-gradient(to left, #fbc9af, #f1887a);
 }
 .strategy-line {
     display: flex;

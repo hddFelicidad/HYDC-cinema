@@ -22,6 +22,10 @@ public class VIPStrategyVO {
      * 购买该vip卡所需金额
      */
     private double price;
+    /**
+     * 策略状态，0：上架状态，1：下架状态
+     */
+    private Integer state;
 
     public VIPStrategyVO(){
 
@@ -66,5 +70,14 @@ public class VIPStrategyVO {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
 }
 

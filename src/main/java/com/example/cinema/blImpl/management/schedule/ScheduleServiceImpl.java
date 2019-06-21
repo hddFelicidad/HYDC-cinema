@@ -16,10 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * @author fjj
- * @date 2019/4/11 4:14 PM
- */
+
 @Service
 public class ScheduleServiceImpl implements ScheduleService, ScheduleServiceForBl {
     private static final String TIME_CONFLICT_ERROR_MESSAGE = "时间段冲突";

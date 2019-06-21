@@ -9,10 +9,6 @@ import com.example.cinema.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @author huwen
- * @date 2019/3/23
- */
 @Service
 public class AccountServiceImpl implements AccountService, AccountServiceForBl {
     private final static String ACCOUNT_EXIST = "账号已存在";

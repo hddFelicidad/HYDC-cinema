@@ -27,29 +27,34 @@ public class VIPPresentServiceImpl implements VIPPresentService {
     @Autowired
     private VIPStrategyService vipStrategyService;
 
+    private List<VIPRecordVO> getVIPCardVOList(List<VIPCard> vipCardList){
+        List<VIPRecordVO> vipRecordVOList=new ArrayList<>();
+        for (int i=0;i<vipCardList.size();i++){
+            VIPCard tempCard=vipCardList.get(i);
+            VIPRecordVO tempRecordVO=new VIPRecordVO();
+
+            tempRecordVO.setUserId(tempCard.getUserId());
+            tempRecordVO.setUserName((accountServiceForBl.getUserById(tempCard.getUserId())).getUsername());
+            tempRecordVO.setVipName((vipStrategyService.selectVIPStrategyByAmount(tempCard.getTargetMoney(),tempCard.getGiftMoney())).getName());
+            tempRecordVO.setTotalAmount(tempCard.getTotalAmount());
+            Date date=new Date();
+            date=tempCard.getJoinDate();
+            tempRecordVO.setJoinDate(date);
+            Date date2=new Date();
+            date2=tempCard.getLastOrderDate();
+            tempRecordVO.setLastOrderDate(date2);
+
+            vipRecordVOList.add(tempRecordVO);
+
+        }
+        return vipRecordVOList;
+    }
+
     @Override
     public ResponseVO getVIPRecordListByAI() {
         try{
-            List<VIPRecordVO> vipRecordVOList=new ArrayList<>();
             List<VIPCard> vipCardList=vipCardMapper.selectAllVIPCard();
-            for (int i=0;i<vipCardList.size();i++){
-                VIPCard tempCard=vipCardList.get(i);
-                VIPRecordVO tempRecordVO=new VIPRecordVO();
-
-                tempRecordVO.setUserId(tempCard.getUserId());
-                tempRecordVO.setUserName((accountServiceForBl.getUserById(tempCard.getUserId())).getUsername());
-                tempRecordVO.setVipName((vipStrategyService.selectVIPStrategyByAmount(tempCard.getTargetMoney(),tempCard.getGiftMoney())).getName());
-                tempRecordVO.setTotalAmount(tempCard.getTotalAmount());
-                Date date=new Date();
-                date=tempCard.getJoinDate();
-                tempRecordVO.setJoinDate(date);
-                Date date2=new Date();
-                date2=tempCard.getLastOrderDate();
-                tempRecordVO.setLastOrderDate(date2);
-
-                vipRecordVOList.add(tempRecordVO);
-
-            }
+            List<VIPRecordVO> vipRecordVOList=getVIPCardVOList(vipCardList);
             //实现AI算法
             Collections.sort(vipRecordVOList,new Comparator<VIPRecordVO>() {
                 @Override
@@ -78,26 +83,8 @@ public class VIPPresentServiceImpl implements VIPPresentService {
     @Override
     public ResponseVO getVIPRecordListByAmount() {
         try{
-            List<VIPRecordVO> vipRecordVOList=new ArrayList<>();
             List<VIPCard> vipCardList=vipCardMapper.selectAllVIPCard();
-            for (int i=0;i<vipCardList.size();i++){
-                VIPCard tempCard=vipCardList.get(i);
-                VIPRecordVO tempRecordVO=new VIPRecordVO();
-
-                tempRecordVO.setUserId(tempCard.getUserId());
-                tempRecordVO.setUserName((accountServiceForBl.getUserById(tempCard.getUserId())).getUsername());
-                tempRecordVO.setVipName((vipStrategyService.selectVIPStrategyByAmount(tempCard.getTargetMoney(),tempCard.getGiftMoney())).getName());
-                tempRecordVO.setTotalAmount(tempCard.getTotalAmount());
-                Date date=new Date();
-                date=tempCard.getJoinDate();
-                tempRecordVO.setJoinDate(date);
-                Date date2=new Date();
-                date2=tempCard.getLastOrderDate();
-                tempRecordVO.setLastOrderDate(date2);
-
-                vipRecordVOList.add(tempRecordVO);
-
-            }
+            List<VIPRecordVO> vipRecordVOList=getVIPCardVOList(vipCardList);
             Collections.sort(vipRecordVOList,new Comparator<VIPRecordVO>() {
                 @Override
                 public int compare(VIPRecordVO p1, VIPRecordVO p2) {
@@ -121,26 +108,8 @@ public class VIPPresentServiceImpl implements VIPPresentService {
     @Override
     public ResponseVO getVIPRecordListByDate() {
         try{
-            List<VIPRecordVO> vipRecordVOList=new ArrayList<>();
             List<VIPCard> vipCardList=vipCardMapper.selectAllVIPCard();
-            for (int i=0;i<vipCardList.size();i++){
-                VIPCard tempCard=vipCardList.get(i);
-                VIPRecordVO tempRecordVO=new VIPRecordVO();
-
-                tempRecordVO.setUserId(tempCard.getUserId());
-                tempRecordVO.setUserName((accountServiceForBl.getUserById(tempCard.getUserId())).getUsername());
-                tempRecordVO.setVipName((vipStrategyService.selectVIPStrategyByAmount(tempCard.getTargetMoney(),tempCard.getGiftMoney())).getName());
-                tempRecordVO.setTotalAmount(tempCard.getTotalAmount());
-                Date date=new Date();
-                date=tempCard.getJoinDate();
-                tempRecordVO.setJoinDate(date);
-                Date date2=new Date();
-                date2=tempCard.getLastOrderDate();
-                tempRecordVO.setLastOrderDate(date2);
-
-                vipRecordVOList.add(tempRecordVO);
-
-            }
+            List<VIPRecordVO> vipRecordVOList=getVIPCardVOList(vipCardList);
             Collections.sort(vipRecordVOList,new Comparator<VIPRecordVO>() {
                 @Override
                 public int compare(VIPRecordVO p1, VIPRecordVO p2) {

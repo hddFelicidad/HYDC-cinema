@@ -1,6 +1,5 @@
 package com.example.cinema.blImpl.statistics;
 
-import com.example.cinema.bl.management.HallService;
 import com.example.cinema.bl.statistics.StatisticsService;
 import com.example.cinema.blImpl.management.hall.HallServiceForBl;
 import com.example.cinema.blImpl.management.schedule.ScheduleServiceForBl;
@@ -17,10 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author fjj
- * @date 2019/4/16 1:34 PM
- */
+
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
     @Autowired

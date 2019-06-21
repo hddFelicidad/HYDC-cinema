@@ -20,9 +20,9 @@ public class VIPStrategyController {
     public ResponseVO publishVIPStrategy(@RequestBody VIPStrategyForm vipStrategyForm){
         return vipStrategyService.publishVIPStrategy(vipStrategyForm);
     }
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    public ResponseVO deleteVIPStrategy(@RequestParam int id){
-        return vipStrategyService.deleteVIPStrategy(id);
+    @RequestMapping(value = "/takeoff", method = RequestMethod.POST)
+    public ResponseVO takeoffVIPStrategy(@RequestBody VIPStrategyForm vipStrategyForm){
+        return vipStrategyService.takeoffVIPStrategy(vipStrategyForm);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -33,4 +33,5 @@ public class VIPStrategyController {
     public ResponseVO getVIPStrategy(){
         return vipStrategyService.getVIPStrategy();
     }
+
 }

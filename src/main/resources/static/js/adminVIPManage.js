@@ -22,6 +22,7 @@ $(document).ready(function() {
         $('.content-vipStrategy').empty();
         var strategiesDomStr = "";
 
+       //将每一项策略主要内容展示出来
         strategies.forEach(function (strategy) {
             strategiesDomStr =
                 "<div class='strategy-container' >" +
@@ -44,41 +45,47 @@ $(document).ready(function() {
                 "</div>";
 
             $('.content-vipStrategy').append(strategiesDomStr);
-            var btn0 = document.createElement("div");
-            btn0.className='vip-card-btn';
-            btn0.innerHTML = "<a type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#strategyEditModal'><span>修改</span></a>";
-            btn0.onclick = function () {
-                $("#strategy-edit-name-input").val(strategy.name);
-                $("#strategy-edit-price-input").val(strategy.price);
-                $("#target-edit-money-input").val(strategy.targetMoney);
-                $("#gift-edit-money-input").val(strategy.giftMoney);
-                $('#strategyEditModal')[0].dataset.strategyId = strategy.id;
-            };
-            $('#strategy-operations'+strategy.id).append(btn0);
-            var btn1 = document.createElement("div");
-            btn1.className='vip-card-btn';
-            btn1.innerHTML = "<a type='button' class='strategy-delete btn btn-default' ><span>下架</span></a>";
-            btn1.onclick = function () {
-                var r = confirm("确认要下架该会员卡吗");
-                if (r) {
-                    deleteRequest(
-                        '/vipStrategy/delete?id=' + strategy.id,
-                        null,
-                        function (res) {
-                            if (res.success) {
-                                getAllStrategies();
-                            } else {
-                                alert(res.message);
-                            }
-                        },
-                        function (error) {
-                            alert(JSON.stringify(error));
-                        }
-                    );
-                }
-            };
-            $('#strategy-operations'+strategy.id).append(btn1);
+            if (strategy.state==0) {
+                //为每一项策略添加修改按钮
+                var btn0 = document.createElement("div");
+                btn0.className = 'vip-card-btn';
+                btn0.innerHTML = "<a type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#strategyEditModal'><span>修改</span></a>";
+                btn0.onclick = function () {
+                    $("#strategy-edit-name-input").val(strategy.name);
+                    $("#strategy-edit-price-input").val(strategy.price);
+                    $("#target-edit-money-input").val(strategy.targetMoney);
+                    $("#gift-edit-money-input").val(strategy.giftMoney);
+                    $('#strategyEditModal')[0].dataset.strategyId = strategy.id;
+                };
+                $('#strategy-operations' + strategy.id).append(btn0);
 
+                //为每一项策略添加删除按钮
+                var btn1 = document.createElement("div");
+                btn1.className = 'vip-card-btn';
+                btn1.innerHTML = "<a type='button' class='strategy-delete btn btn-default' ><span>下架</span></a>";
+                btn1.onclick = function () {
+                    var r = confirm("确认要下架该会员卡吗");
+                    if (r) {
+                        postRequest(
+                            '/vipStrategy/takeoff',
+                            strategy,
+                            function (res) {
+                                if (res.success) {
+                                    getAllStrategies();
+                                } else {
+                                    alert(res.message);
+                                }
+                            },
+                            function (error) {
+                                alert(JSON.stringify(error));
+                            }
+                        );
+                    }
+                };
+                $('#strategy-operations' + strategy.id).append(btn1);
+            } else {
+                $('#strategy-operations' + strategy.id).append("<h3>已下架</h3>");
+            }
         });
     }
     //发布会员卡

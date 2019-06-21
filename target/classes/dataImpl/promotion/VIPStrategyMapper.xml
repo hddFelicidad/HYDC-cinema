@@ -3,22 +3,27 @@
 <mapper namespace="com.example.cinema.data.promotion.VIPStrategyMapper">
     <insert id="insertOneVIPStrategy" parameterType="com.example.cinema.po.VIPStrategy"
             useGeneratedKeys="true" keyProperty="id">
-        insert into vipStrategy(name,price,target_money,gift_money)
-        values(#{name},#{price},#{targetMoney},#{giftMoney})
+        insert into vipStrategy(name,price,target_money,gift_money,state)
+        values(#{name},#{price},#{targetMoney},#{giftMoney},#{state})
     </insert>
 
-    <delete id="takeOffVIPStrategyById" parameterType="int">
-        update vipStrategy set state=1
-        where id =#{id}
-    </delete>
+    <update id="takeoffVIPStrategy" parameterType="com.example.cinema.vo.VIPStrategyForm">
+        update VIPStrategy set state=1
+        where id = #{id}
+    </update>
 
     <update id="updateVIPStrategy" parameterType="com.example.cinema.vo.VIPStrategyForm">
-        update VIPStrategy set name = #{name}, price = #{price}, target_money = #{targetMoney}, gift_money = #{giftMoney}
+        update VIPStrategy set name = #{name}, price = #{price}, target_money = #{targetMoney}, gift_money = #{giftMoney},state=#{state}
         where id = #{id}
     </update>
 
     <select id="selectVIPStrategies" resultMap="VIPStrategy">
         select * from vipStrategy
+        order by vipStrategy.state asc
+    </select>
+
+    <select id="selectUsableVIPStrategies" resultMap="VIPStrategy">
+        select * from vipStrategy where state=0
     </select>
 
     <select id="selectVIPStrategyById" resultMap="VIPStrategy">
@@ -28,7 +33,7 @@
 
     <select id="selectVIPStrategyByAmount" resultMap="VIPStrategy">
         select * from vipstrategy
-        where target_money=#{targetMoney} and gift_money=#{giftMoney}
+        where target_money=#{targetMoney} and gift_money=#{giftMoney} and state=0
     </select>
 
     <resultMap id="VIPStrategy" type="com.example.cinema.po.VIPStrategy">
@@ -37,6 +42,7 @@
         <result column="price" property="price"></result>
         <result column="target_money" property="targetMoney"></result>
         <result column="gift_money" property="giftMoney"></result>
+        <result column="state" property="state"></result>
     </resultMap>
 
 </mapper>

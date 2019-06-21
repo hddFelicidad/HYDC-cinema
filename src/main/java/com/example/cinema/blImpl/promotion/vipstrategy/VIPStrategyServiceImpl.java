@@ -28,6 +28,7 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
             vipStrategy.setGiftMoney(vipStrategyForm.getGiftMoney());
             vipStrategy.setPrice(vipStrategyForm.getPrice());
             vipStrategy.setTargetMoney(vipStrategyForm.getTargetMoney());
+            vipStrategy.setState(vipStrategyForm.getState());
             if (checkVIPStrategyInfo(vipStrategyForm)!=null){
                 return ResponseVO.buildFailure(checkVIPStrategyInfo(vipStrategyForm));
             }
@@ -40,13 +41,12 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
     }
 
     @Override
-    public ResponseVO deleteVIPStrategy(int id){
+    public ResponseVO takeoffVIPStrategy(VIPStrategyForm vipStrategyForm){
         try {
-            VIPStrategy vipStrategy=vipStrategyMapper.selectVIPStrategyById(id);
-            if (vipStrategy!=null){
-                vipStrategyMapper.deleteVIPStrategyById(id);
-            }
-            return ResponseVO.buildSuccess(vipStrategyMapper.selectVIPStrategies());
+            vipStrategyMapper.takeoffVIPStrategy(vipStrategyForm);
+            List<VIPStrategy> vipStrategyList=vipStrategyMapper.selectVIPStrategies();
+            List<VIPStrategyVO> vipStrategyVOList=VIPStrategyList2VIPStrategyVOList(vipStrategyList);
+            return ResponseVO.buildSuccess(vipStrategyVOList);
         }catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
@@ -70,22 +70,20 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
     @Override
     public ResponseVO getVIPStrategy(){
         try {
-            List<VIPStrategyVO> vipStrategyVOList=new ArrayList<>();
             List<VIPStrategy> vipStrategyList=vipStrategyMapper.selectVIPStrategies();
-            for (VIPStrategy vipStrategy:vipStrategyList){
-                VIPStrategyVO vipStrategyVO=new VIPStrategyVO();
-                vipStrategyVO.setId(vipStrategy.getId());
-                vipStrategyVO.setName(vipStrategy.getName());
-                vipStrategyVO.setGiftMoney(vipStrategy.getGiftMoney());
-                vipStrategyVO.setTargetMoney(vipStrategy.getTargetMoney());
-                vipStrategyVO.setPrice(vipStrategy.getPrice());
-                vipStrategyVOList.add(vipStrategyVO);
-            }
+            List<VIPStrategyVO> vipStrategyVOList=VIPStrategyList2VIPStrategyVOList(vipStrategyList);
             return ResponseVO.buildSuccess(vipStrategyVOList);
         }catch (Exception e) {
             e.printStackTrace();
             return ResponseVO.buildFailure("失败");
         }
+    }
+
+    @Override
+    public List<VIPStrategy> getUsableVIPStrategies(){
+        List<VIPStrategy> vipStrategyList=vipStrategyMapper.selectUsableVIPStrategies();
+        return vipStrategyList;
+
     }
 
     @Override
@@ -110,4 +108,12 @@ public class VIPStrategyServiceImpl implements VIPStrategyService {
         return null;
     }
 
+    private List<VIPStrategyVO> VIPStrategyList2VIPStrategyVOList(List<VIPStrategy> vipStrategyList){
+        List<VIPStrategyVO> vipStrategyVOList=new ArrayList<>();
+        for (VIPStrategy vipStrategy:vipStrategyList){
+            VIPStrategyVO vipStrategyVO=vipStrategy.toVO();
+            vipStrategyVOList.add(vipStrategyVO);
+        }
+        return vipStrategyVOList;
+    }
 }

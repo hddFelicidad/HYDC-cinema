@@ -30,7 +30,9 @@ $(document).ready(function() {
                 movieDomStr += "<li class='activity-movie primary-text'>"+movie.name+"</li>";
                 });
 
-
+           /*
+           对每一项退票策略，将其主要内容展示出来
+            */
             refundsDomStr+=
                 "<div class='refund-container'>" +
                 "    <div class='refund-card'>" +
@@ -57,6 +59,10 @@ $(document).ready(function() {
                 "</div>";
 
             $(".content-refundStrategy").append(refundsDomStr);
+
+            /*
+            *为退票策略添加修改按钮
+            * */
             var btn0 = document.createElement("div");
             btn0.className='refund-right-btn';
             btn0.innerHTML = "<a type='button' class='strategy-edit btn btn-default' data-backdrop='static' data-toggle='modal' data-target='#refundEditModal'><span>修改</span></a>";
@@ -69,6 +75,10 @@ $(document).ready(function() {
 
             };
             $(".refund-card-right-"+fund.id).append(btn0);
+
+            /*
+            *为退票策略添加删除按钮
+            * */
             var btn1 = document.createElement("div");
             btn1.className='refund-right-btn';
             btn1.innerHTML = "<a type='button' class='strategy-delete btn btn-default' ><span>删除</span></a>";
@@ -192,6 +202,8 @@ $(document).ready(function() {
                 alert(error);
             });
     });
+
+
     function getEditRefundForm() {
         return {
             id: nowRefundId,

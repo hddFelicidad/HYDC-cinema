@@ -11,10 +11,6 @@ import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @author fjj
- * @date 2019/4/28 3:07 PM
- */
 @Service
 public class MovieLikeServiceImpl implements MovieLikeService {
     private static final String ALREADY_LIKE_ERROR_MESSAGE = "用户已标记该电影为想看";

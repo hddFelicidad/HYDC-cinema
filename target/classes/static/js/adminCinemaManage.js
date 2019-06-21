@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+    /*
+    初始化界面
+    */
     var canSeeDate = 0;
     var nowHallId;
     getCanSeeDayNum();
@@ -19,6 +22,9 @@ $(document).ready(function() {
         );
     }
 
+    /*
+   获取影厅座位布局
+   */
     function renderHall(halls) {
         $("#hall-card").empty();
         halls.forEach(function (hall) {
@@ -43,6 +49,10 @@ $(document).ready(function() {
                 "</div>"
             ;
             $('#hall-card').append(hallDom);
+
+            /*
+           为每一个影厅添加修改影厅信息按钮
+           */
             var bt0=document.createElement("div");
             bt0.className='cinema-hall-btn';
             bt0.innerHTML= "<a type='button' class='btn btn-primary' data-backdrop='static' data-toggle='modal' data-target='#hallEditModal'>修改影厅信息</a>";
@@ -53,6 +63,10 @@ $(document).ready(function() {
                 $("#edit-hall-column-input" ).val(hall.column);
             };
             $('#cinema-hall-btn-'+hall.id).append(bt0);
+
+            /*
+           为每一个影厅添加删除影厅信息按钮
+           */
             var bt1=document.createElement("div");
             bt1.className='cinema-hall-btn';
             bt1.innerHTML= "<a type='button' class='btn btn-danger' id='delete-btn-"+ hall.id +" '><span>删除影厅信息</span></a>";
@@ -76,7 +90,6 @@ $(document).ready(function() {
                                     function (error) {
                                         alert(JSON.stringify(error));
                                     }
-
                                 );
                             }
                         }
@@ -93,7 +106,6 @@ $(document).ready(function() {
             };
             $('#cinema-hall-btn-'+hall.id).append(bt1);
         });
-
     }
 
     function getCanSeeDayNum() {
@@ -181,6 +193,9 @@ $(document).ready(function() {
         return isValidate;
     }
 
+    /*
+    修改影厅信息后，刷新界面
+    */
     $("#hall-edit-form-btn").click(function () {
         getRequest(
             '/hall/get?id='+nowHallId,
@@ -221,6 +236,7 @@ $(document).ready(function() {
             column: $('#edit-hall-column-input').val(),
         };
     }
+
 
     function validateEditHallForm(data) {
         var isValidate = true;

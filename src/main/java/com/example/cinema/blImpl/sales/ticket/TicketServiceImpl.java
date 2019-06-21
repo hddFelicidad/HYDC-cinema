@@ -1,6 +1,5 @@
 package com.example.cinema.blImpl.sales.ticket;
 
-import com.example.cinema.bl.management.HallService;
 import com.example.cinema.bl.promotion.CouponService;
 import com.example.cinema.bl.sales.TicketService;
 import com.example.cinema.blImpl.management.hall.HallServiceForBl;
@@ -23,9 +22,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by liying on 2019/4/16.
- */
 @Service
 public class TicketServiceImpl implements TicketService,TicketServiceForBl {
 

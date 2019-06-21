@@ -14,10 +14,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author fjj
- * @date 2019/3/12 6:43 PM
- */
 @Service
 public class MovieServiceImpl implements MovieService, MovieServiceForBl {
     private static final String SCHEDULE_ERROR_MESSAGE = "有电影后续仍有排片或已有观众购票且未使用";

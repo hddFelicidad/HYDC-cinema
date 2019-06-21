@@ -8,8 +8,10 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+
 /**
- * Created by liying on 2019/4/14.
+ * @author pooh
+ * @date 2019/6/1 7:21 PM
  */
 @Mapper
 public interface VIPCardMapper {

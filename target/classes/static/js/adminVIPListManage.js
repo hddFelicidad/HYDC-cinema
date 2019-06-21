@@ -81,7 +81,8 @@ $(document).ready(function () {
             },
             function (error) {
                 alert(error);
-            });/*
+            });
+        /*
         var list=[
             VIPRecordV0={
                 UserId:1,

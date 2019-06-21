@@ -17,6 +17,7 @@ function getVIP() {
                 $("#member-card").css("display", "");
                 $("#nonmember-card").css("display", "none");
                 $("#buy-member-card").css("display","none");
+                $("#all-coupon").css("display","");
 
 
                 vipCardId = res.content.id;
@@ -31,6 +32,7 @@ function getVIP() {
                 $("#member-card").css("display", "none");
                 $("#nonmember-card").css("display", "");
                 $("#buy-member-card").css("display","none");
+                $("#all-coupon").css("display","");
             }
         },
         function (error) {
@@ -189,7 +191,7 @@ function getCoupon() {
                 var couponList = res.content;
                 var couponListContent = '';
                 for (let coupon of couponList) {
-                    couponListContent += '<div class="col-md-6 coupon-wrapper"><div class="coupon"><div class="content">' +
+                    couponListContent += '<div class="coupon-wrapper"><div class="coupon"><div class="content">' +
                         '<div class="col-md-8 left">' +
                         '<div class="name">' +
                         coupon.name +

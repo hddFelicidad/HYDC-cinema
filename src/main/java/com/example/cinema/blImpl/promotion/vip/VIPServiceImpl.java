@@ -71,7 +71,7 @@ public class VIPServiceImpl implements VIPService, VIPServiceForBl {
     @Override
     public ResponseVO getVIPInfo() {
         try {
-            List<VIPStrategy> vipStrategyList= vipStrategyService.selectVIPStrategies();
+            List<VIPStrategy> vipStrategyList= vipStrategyService.getUsableVIPStrategies();
             List<VIPInfoVO> vipInfoVOList=new ArrayList<>();
             for (VIPStrategy vipStrategy:vipStrategyList){
                 VIPInfoVO vipInfoVO=new VIPInfoVO();
@@ -160,7 +160,6 @@ public class VIPServiceImpl implements VIPService, VIPServiceForBl {
                     valueVipStrategy=vipStrategy;
                 }
             }
-            VIPStrategyVO valueVipStrategyVO=valueVipStrategy.toVO();
             return ResponseVO.buildSuccess(valueVipStrategy);
         } catch (Exception e) {
             e.printStackTrace();

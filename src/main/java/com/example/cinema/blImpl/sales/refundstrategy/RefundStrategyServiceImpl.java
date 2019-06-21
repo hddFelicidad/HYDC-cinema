@@ -67,7 +67,7 @@ public class RefundStrategyServiceImpl implements RefundStrategyService{
                 }
                 refundStrategyMapper.insertRefundStrategyAndMovie(refundStrategy.getId(),movieIdList);
             }
-            //Strategy和id的联系要进行处理
+            //Strategy和id的联系已进行处理
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();

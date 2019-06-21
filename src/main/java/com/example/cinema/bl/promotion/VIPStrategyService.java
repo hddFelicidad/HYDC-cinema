@@ -3,6 +3,7 @@ package com.example.cinema.bl.promotion;
 import com.example.cinema.po.VIPStrategy;
 import com.example.cinema.vo.ResponseVO;
 import com.example.cinema.vo.VIPStrategyForm;
+import com.example.cinema.vo.VIPStrategyVO;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface VIPStrategyService {
      * 删除VIP策略
      * @return
      */
-    ResponseVO deleteVIPStrategy(int id);
+    ResponseVO takeoffVIPStrategy(VIPStrategyForm vipStrategyForm);
     /**
      * 更新VIP策略
      * @return
@@ -31,13 +32,16 @@ public interface VIPStrategyService {
      * @return
      */
     ResponseVO getVIPStrategy();
-
+    /**
+     * 查看所有上架的VIP优惠策略
+     * @return
+     */
+    List<VIPStrategy> getUsableVIPStrategies();
     /**
      * 查看所有VIP优惠策略
      * @return
      */
     List<VIPStrategy> selectVIPStrategies();
-
     /**
      * 通过目标金额和赠送金额查看VIP优惠策略
      * @param targetMoney

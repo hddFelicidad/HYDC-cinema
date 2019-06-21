@@ -109,13 +109,13 @@ public class StaffServiceImpl implements StaffService {
             return ID_CARD_LENGTH_ERROR_MESSAGE;
 
         }
-        else if (staffForm.getUserName().length()<4||staffForm.getUserName().length()>10){
+        else if ((staffForm.getUserName().length()<4&&staffForm.getUserName().length()>0)||staffForm.getUserName().length()>10){
             return USERNAME_LENGTH_ERROR_MESSAGE;
         }
-        else if (staffForm.getPassword().length()<6||staffForm.getPassword().length()>12){
+        else if ((staffForm.getPassword().length()<6&&staffForm.getPassword().length()>0)||staffForm.getPassword().length()>12){
             return PASSWORD_LENGTH_ERROR_MESSAGE;
         }
-        else if (d.after(staffForm.getBirth())){
+        else if (d.before(staffForm.getBirth())){
             return TIME_CONFLICT_ERROR_MESSAGE;
         }
         return null;

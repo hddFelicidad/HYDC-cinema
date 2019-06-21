@@ -17,9 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- * Created by liying on 2019/4/20.
- */
+
 @Service
 public class ActivityServiceImpl implements ActivityService, ActivityServiceForBl {
     private static final String DATE_LESS_THAN_LENGTH_ERROR_MESSAGE = "结束时间不能早于开始时间";
@@ -45,6 +43,7 @@ public class ActivityServiceImpl implements ActivityService, ActivityServiceForB
             activity.setStartTime(activityForm.getStartTime());
             activity.setEndTime(activityForm.getEndTime());
             activity.setCoupon(coupon);
+            //判断活动时间是否正确
             if (activity.getStartTime().after(activity.getEndTime())){
                 return ResponseVO.buildFailure(DATE_LESS_THAN_LENGTH_ERROR_MESSAGE);
             }
